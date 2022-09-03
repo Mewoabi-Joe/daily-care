@@ -7,7 +7,7 @@ const Navbar = () => {
 		<header style={{ paddingBottom: 70 }}>
 			<nav className="navbar navbar-expand-lg fixed-top navbar-light bg-info">
 				<div className="container ">
-					<Link className="navbar-brand" to="/">
+					<Link className="navbar-brand" to="/daily-care">
 						<img
 							src={firstIllus}
 							alt="logo"
@@ -29,7 +29,7 @@ const Navbar = () => {
 					</button>
 					<div className="collapse navbar-collapse " id="navbarNavAltMarkup">
 						<div className="navbar-nav ms-auto">
-							<Link className="nav-link active" aria-current="page" to="/">
+							<Link className="nav-link active" aria-current="page" to="/daily-care">
 								Home
 							</Link>
 							<a className="nav-link" href="#services">
