@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7b2a4d08.css",
-    "main.js": "/static/js/main.165ac4ec.js",
+    "main.js": "/static/js/main.35b133da.js",
     "static/media/ghono.jpg": "/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/cbc.jpg": "/static/media/cbc.55d8dec2d515693b39f1.jpg",
     "static/media/renal.jpg": "/static/media/renal.8f0466ff7170b8a9c725.jpg",
@@ -16,10 +16,10 @@
     "static/media/undraw_scientist_0ft9.svg": "/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/index.html",
     "main.7b2a4d08.css.map": "/static/css/main.7b2a4d08.css.map",
-    "main.165ac4ec.js.map": "/static/js/main.165ac4ec.js.map"
+    "main.35b133da.js.map": "/static/js/main.35b133da.js.map"
   },
   "entrypoints": [
     "static/css/main.7b2a4d08.css",
-    "static/js/main.165ac4ec.js"
+    "static/js/main.35b133da.js"
   ]
 }
