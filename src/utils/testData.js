@@ -44,7 +44,7 @@ export const tests = [
 		description:
 			"Test used to detect the presence of the human immunodeficiency virus, the virus that causes acquired immunodeficiency syndrome, in serum, saliva, or urine. Such tests may detect antibodies, antigens, or RNA",
 		image: hiv,
-		tags: ["blood test", "STDs", "Sexually transmitted diseases"],
+		tags: ["blood test", "STDs"],
 		price: 0,
 	},
 	{
@@ -52,7 +52,7 @@ export const tests = [
 		description:
 			"The test is looking for evidence of the bacterium Neisseria gonorrhoeae, which causes the sexually transmitted disease gonorrhoea. Gonorrhoea is easily treated but can cause severe reproductive and health problems if left untreated",
 		image: ghono,
-		tags: ["Urine", "STDs", "Sexually transmitted diseases"],
+		tags: ["Urine", "STDs"],
 		price: 0,
 	},
 	{

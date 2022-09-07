@@ -1,9 +1,8 @@
 import React from "react";
-import cbc from "../assets/photos/cbc.jpg";
 
 const LabTestCard = ({ image, name, price }) => {
 	return (
-		<div className="m-auto card text-dark text-start shadow rounded" style={{ width: 230, height: 320 }}>
+		<div className="m-auto card card-style text-dark text-start shadow rounded" style={{ width: 230, height: 320 }}>
 			<img src={image} className="d-block card-img-top h-50" alt="Complete Blood Count"></img>
 			<div className="card-body pt-1">
 				<h5 className="card-title">{name}</h5>

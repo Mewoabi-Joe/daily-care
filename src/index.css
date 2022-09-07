@@ -6,12 +6,17 @@ body {
 p {
 	margin: 0px !important;
 }
-.card:hover {
+.card-style:hover {
 	cursor: pointer;
 	opacity: 0.95;
 	box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
 	transform: translate3d(0px, -1px, 0px);
 }
+
+.short-card-style:hover {
+	cursor: pointer;
+}
+
 #carouselMedium > div > div.carousel-item > div > div {
 	margin: 0 !important;
 }
@@ -89,4 +94,9 @@ p {
 }
 #root > div > main > footer > div > div > div.text-center.d-block > a:hover {
 	color: white;
+}
+
+.pointer:hover {
+	cursor: pointer;
+	opacity: 0.7;
 }

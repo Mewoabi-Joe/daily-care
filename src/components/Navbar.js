@@ -32,15 +32,15 @@ const Navbar = () => {
 							<Link className="nav-link active" aria-current="page" to="/daily-care">
 								Home
 							</Link>
-							<a className="nav-link" href="#services">
+							{/* <a className="nav-link" href="#services">
 								Our services
-							</a>
-							<a className="nav-link" href="#labTests">
+							</a> */}
+							<Link className="nav-link" to="/lab_tests">
 								Lab tests
-							</a>
-							<a className="nav-link" href="#getInTouch">
+							</Link>
+							{/* <a className="nav-link" href="#getInTouch">
 								Get in touch
-							</a>
+							</a> */}
 							<Link className="nav-link" to="/signup">
 								Signup
 							</Link>
