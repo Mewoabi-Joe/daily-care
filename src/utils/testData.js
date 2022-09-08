@@ -21,14 +21,14 @@ export const tests = [
 		description:
 			"Liver function tests (also known as a liver panel) are blood tests that measure different enzymes, proteins, and other substances made by the liver. These tests check the overall health of your liver.",
 		image: lft,
-		tags: ["blood test", "liver", "organ function test"],
+		tags: ["blood test", "liver", "organ function"],
 		price: 30000,
 	},
 	{
 		name: "kidney function tests",
 		description: "Kidney function tests are urine or blood tests that evaluate how well your kidneys are working",
 		image: renal,
-		tags: ["blood test", "kidney", "organ function test", "urine"],
+		tags: ["blood test", "kidney", "organ function", "urine"],
 		price: 40000,
 	},
 	{
@@ -60,7 +60,7 @@ export const tests = [
 		description:
 			"A test of your urine. It's used to detect and manage a wide range of disorders, such as urinary tract infections,Liver issues, kidney disease and diabetes. A urinalysis involves checking the appearance, concentration and content of urine.",
 		image: uri,
-		tags: ["Urine", "Kidney", "Liver", "diabetes", "organ function test"],
+		tags: ["Urine", "Kidney", "diabetes", "organ function"],
 		price: 60000,
 	},
 	{
@@ -68,7 +68,7 @@ export const tests = [
 		description:
 			"Viral tests look for a current infection with SARS-CoV-2, the virus that causes COVID-19, by testing specimens from your nose or mouth",
 		image: covid,
-		tags: ["Nasal", "respiratory", "Liver", "bacteria", "virus"],
+		tags: ["Nasal", "respiratory", "bacteria", "virus"],
 		price: 0,
 	},
 ];

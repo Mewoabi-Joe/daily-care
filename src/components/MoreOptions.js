@@ -16,18 +16,20 @@ const MoreOptions = () => {
 				</button>
 				<ul className="dropdown-menu">
 					<li>
-						<a className="dropdown-item" href="#a">
-							view details
+						<a className="dropdown-item d-flex" href="#a">
+							<span class="material-symbols-outlined  me-2">visibility</span>
+							<span>view details</span>
 						</a>
 					</li>
 					<li>
-						<a className="dropdown-item" href="#a">
-							Another action
+						<a className="dropdown-item d-flex" href="#a">
+							<span class="material-symbols-outlined me-2">payments</span>
+							Book test
 						</a>
 					</li>
 					<li>
-						<a className="dropdown-item" href="#a">
-							Something else here
+						<a className="dropdown-item d-flex" href="#a">
+							<span class="material-symbols-outlined me-2">add_shopping_cart</span>Add to cart
 						</a>
 					</li>
 				</ul>
