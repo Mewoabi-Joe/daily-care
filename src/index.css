@@ -104,3 +104,14 @@ p {
 	cursor: pointer;
 	opacity: 0.7;
 }
+
+#root > div > div > div > div > div.py-2.px-4.pt-3.col-md-8.col-lg-5 > label {
+	cursor: pointer;
+	/* Style as you please, it will become the visible UI component. */
+}
+
+#upload-photo {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}

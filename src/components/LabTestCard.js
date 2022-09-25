@@ -13,10 +13,10 @@ const LabTestCard = ({ image, name, price }) => {
 					</span>
 					<span className="ms-2">BOOK TEST</span>
 				</button>
-				<button className="btn btn-info w-100 mt-2 d-flex justify-content-center">
+				{/* <button className="btn btn-info w-100 mt-2 d-flex justify-content-center">
 					<span className="material-symbols-outlined">add_shopping_cart</span>
 					<span className="ms-2">ADD TO CART</span>
-				</button>
+				</button> */}
 			</div>
 		</div>
 	);

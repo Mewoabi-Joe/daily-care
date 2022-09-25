@@ -29,6 +29,9 @@ function App() {
 				<Routes>
 					<Route path="/add_test" element={<AddTest />} />
 				</Routes>
+				<Routes>
+					<Route path="/update_test" element={<AddTest />} />
+				</Routes>
 			</BrowserRouter>
 		</div>
 	);
