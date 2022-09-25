@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/daily-care/static/css/main.75d2e94f.css",
-    "main.js": "/daily-care/static/js/main.98513159.js",
+    "main.css": "/daily-care/static/css/main.194f0347.css",
+    "main.js": "/daily-care/static/js/main.7e6d32e3.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/cbc.jpg": "/daily-care/static/media/cbc.55d8dec2d515693b39f1.jpg",
     "static/media/renal.jpg": "/daily-care/static/media/renal.8f0466ff7170b8a9c725.jpg",
@@ -15,11 +15,11 @@
     "static/media/hiv.webp": "/daily-care/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
-    "main.75d2e94f.css.map": "/daily-care/static/css/main.75d2e94f.css.map",
-    "main.98513159.js.map": "/daily-care/static/js/main.98513159.js.map"
+    "main.194f0347.css.map": "/daily-care/static/css/main.194f0347.css.map",
+    "main.7e6d32e3.js.map": "/daily-care/static/js/main.7e6d32e3.js.map"
   },
   "entrypoints": [
-    "static/css/main.75d2e94f.css",
-    "static/js/main.98513159.js"
+    "static/css/main.194f0347.css",
+    "static/js/main.7e6d32e3.js"
   ]
 }
