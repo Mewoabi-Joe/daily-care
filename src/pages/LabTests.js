@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { tests } from "../utils/testData.js";
 import ShortCartNoBorder from "../components/ShortCartNoBorder.js";
 import MobileScreenCard from "../components/MobileScreenCard.js";
@@ -105,6 +106,13 @@ const LabTests = () => {
 		setVariableTests(originalTests);
 	};
 
+	const navigate = useNavigate();
+
+	const handleCardClick = (test) => {
+		console.log(test);
+		navigate("/lab_test_details", { state: test });
+	};
+
 	return (
 		<div className="container">
 			{/* for mobile to sm screens */}
@@ -154,7 +162,7 @@ const LabTests = () => {
 												value=""
 												id={tag}
 											></input>
-											<label class="form-check-label" for={tag}>
+											<label class="form-check-label" htmlFor={tag}>
 												{tag}
 											</label>
 										</div>
@@ -179,7 +187,13 @@ const LabTests = () => {
 				) : (
 					<div>
 						{variableTests.map((test, index) => (
-							<MobileScreenCard name={test.name} image={test.image} price={test.price} key={index} />
+							<MobileScreenCard
+								name={test.name}
+								image={test.image}
+								price={test.price}
+								key={index}
+								handleClick={() => handleCardClick(test)}
+							/>
 						))}
 					</div>
 				)}
@@ -218,8 +232,8 @@ const LabTests = () => {
 							filter
 						</button>
 						<ul className="dropdown-menu">
-							{tags.map((tag) => (
-								<li>
+							{tags.map((tag, index) => (
+								<li key={index}>
 									<div class="dropdown-item">
 										<div className="form-check ">
 											<input
@@ -230,7 +244,7 @@ const LabTests = () => {
 												value=""
 												id={tag}
 											></input>
-											<label class="form-check-label" for={tag}>
+											<label class="form-check-label" htmlFor={tag}>
 												{tag}
 											</label>
 										</div>
@@ -255,7 +269,12 @@ const LabTests = () => {
 					<div className="row gy-md-2 gy-xl-5">
 						{variableTests.map((test, index) => (
 							<div className="col-sm-5 me-sm-4 mb-sm-4 me-md-0 mb-md-0 col-md-4 col-lg-3" key={index}>
-								<ShortCartNoBorder image={test.image} name={test.name} price={test.price} />
+								<ShortCartNoBorder
+									image={test.image}
+									name={test.name}
+									price={test.price}
+									handleClick={() => handleCardClick(test)}
+								/>
 							</div>
 						))}
 					</div>

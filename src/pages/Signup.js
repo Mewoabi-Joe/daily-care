@@ -13,12 +13,12 @@ const Signup = () => {
 	});
 	return (
 		<div class="container-lg">
-			<h3 class="text-center my-3">Sign up to DailyCare</h3>
+			<h3 class="text-center my-2">Sign up to DailyCare</h3>
 			<small className="text-center d-block ">
 				New to DailyCare with no account? Go ahead fill in the info and signup
 			</small>
 
-			<div class="row justify-content-center mt-4 ">
+			<div class="row justify-content-center mt-2 ">
 				<form class="col-11 col-sm-9 col-md-8 col-lg-6 border border-primary px-5 py-4 rounded-4">
 					<div class="mb-1">
 						<label for="first_name" class="form-label">
