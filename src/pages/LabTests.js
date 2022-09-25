@@ -192,7 +192,7 @@ const LabTests = () => {
 								image={test.image}
 								price={test.price}
 								key={index}
-								handleClick={() => handleCardClick(test)}
+								handleViewDetails={() => handleCardClick(test)}
 							/>
 						))}
 					</div>

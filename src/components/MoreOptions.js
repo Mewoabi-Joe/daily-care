@@ -1,6 +1,6 @@
 import React from "react";
 
-const MoreOptions = ({ handleViewDetails }) => {
+const MoreOptions = ({ handleViewDetails, handleEditTest }) => {
 	return (
 		<div>
 			<div className="dropdown">
@@ -27,9 +27,16 @@ const MoreOptions = ({ handleViewDetails }) => {
 							Book test
 						</a>
 					</li>
+					<li onClick={handleEditTest}>
+						<div className="dropdown-item d-flex" href="#a">
+							<span class="material-symbols-outlined me-2">edit</span>
+							Update test
+						</div>
+					</li>
 					<li>
 						<a className="dropdown-item d-flex" href="#a">
-							<span class="material-symbols-outlined me-2">add_shopping_cart</span>Add to cart
+							<span class="material-symbols-outlined me-2">delete_forever</span>
+							Delete test
 						</a>
 					</li>
 				</ul>

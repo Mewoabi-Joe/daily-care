@@ -8,6 +8,7 @@ import LabTests from "./pages/LabTests"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 function App() {
+
   const [isAuth, setAuth] = useState(false)
 
   return (
@@ -35,6 +36,7 @@ function App() {
       </BrowserRouter>
     </div>
   )
+
 }
 
 export default App
