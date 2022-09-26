@@ -28,13 +28,6 @@ const LabTestDetails = () => {
 							<span className="material-symbols-outlined me-2">payments</span>
 							Book test
 						</button>
-						<button
-							style={width > 1200 ? { width: "47%" } : { width: "100%" }}
-							className="d-flex justify-content-center mb-2 btn btn-primary d-inline-block"
-						>
-							<span className="material-symbols-outlined me-2">add_shopping_cart</span>
-							Add to cart
-						</button>
 					</div>
 				</div>
 			</div>

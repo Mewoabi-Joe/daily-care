@@ -108,7 +108,7 @@ const LabTests = () => {
 
 	const navigate = useNavigate();
 
-	const handleCardClick = (test) => {
+	const handleViewDetails = (test) => {
 		console.log(test);
 		navigate("/lab_test_details", { state: test });
 	};
@@ -192,7 +192,7 @@ const LabTests = () => {
 								image={test.image}
 								price={test.price}
 								key={index}
-								handleViewDetails={() => handleCardClick(test)}
+								handleViewDetails={() => handleViewDetails(test)}
 							/>
 						))}
 					</div>
@@ -273,7 +273,7 @@ const LabTests = () => {
 									image={test.image}
 									name={test.name}
 									price={test.price}
-									handleClick={() => handleCardClick(test)}
+									handleViewDetails={() => handleViewDetails(test)}
 								/>
 							</div>
 						))}

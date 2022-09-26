@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cbc from "../assets/photos/cbc.jpg";
-import useWindowDimensions from "../hooks/WindowsDimensionHook";
+// import useWindowDimensions from "../hooks/WindowsDimensionHook";
+import { tests } from "../utils/testData.js";
 
 const AddTest = () => {
-	const { height, width } = useWindowDimensions();
+	const [tagStates, setTagStates] = useState({});
+	const [tags, setTags] = useState([]);
+	// const { height, width } = useWindowDimensions();
+	const [checkedTags, setCheckedTags] = useState([]);
+
+	const [, updateState] = React.useState();
+	const forceUpdate = React.useCallback(() => updateState({}), []);
 
 	const [test, setTest] = useState({
 		name: "",
@@ -21,8 +28,50 @@ const AddTest = () => {
 		tags: ["blood test", "screening test"],
 		price: 50000,
 	};
-	//mobile: 490, 576: 576, 768: 503, 992: 399, 1200: 478
-	//height: 300
+
+	const capitalizeFirstLetterOfTagsInTest = () => {
+		return tests.map((test) => {
+			const capitalisedTags = test.tags.map((tag) => capitalizeFirstLetter(tag));
+			test.tags = capitalisedTags;
+			return test;
+		});
+	};
+
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+	useEffect(() => {
+		const originalTestsWithCapitalisedTags = capitalizeFirstLetterOfTagsInTest();
+		let labTestTags = [];
+		originalTestsWithCapitalisedTags.forEach((test) => labTestTags.push(...test.tags));
+		const setOflabTestTags = new Set(labTestTags);
+		const theTags = Array.from(setOflabTestTags);
+		// console.log("theTags", theTags);
+		setTags(theTags);
+		let localTagStates = {};
+		theTags.forEach((tag) => (localTagStates[tag] = false));
+		setTagStates(localTagStates);
+	}, []);
+
+	const handleCheckBoxChange = (e) => {
+		let localTagStates = tagStates;
+		localTagStates[e.target.id] = e.target.checked;
+		setTagStates(localTagStates);
+		updateCheckedTags();
+		console.log("tagStates", tagStates);
+		console.log("tags", tags);
+		forceUpdate();
+	};
+
+	console.log("A rerender");
+	const updateCheckedTags = () => {
+		const tagKeys = Object.keys(tagStates);
+		const localCheckedTags = tagKeys.filter((tagKey) => tagStates[tagKey] === true);
+		console.log("checkedTags", localCheckedTags);
+		setCheckedTags(checkedTags);
+	};
+
 	return (
 		<div>
 			<h2 className="text-center mt-3">Create a lab test</h2>
@@ -30,7 +79,7 @@ const AddTest = () => {
 				<div className="row justify-content-center">
 					<div className="py-2 px-4 pt-3 col-md-8 col-lg-5">
 						<input
-							className="text-center d-lg-none h2 form-control form-control-lg d-block mb-2"
+							className="text-center d-lg-none h2 form-control form-control-lg d-block mb-3"
 							type="text"
 							placeholder="Enter lab test name"
 						/>
@@ -45,7 +94,7 @@ const AddTest = () => {
 					</div>
 					<div className="col col-md-8 col-lg-6  py-3 px-4">
 						<input
-							className="d-none mb-5 d-lg-block text-center h2 form-control form-control-lg d-block "
+							className="d-none mb-3 d-lg-block text-center h2 form-control form-control-lg d-block "
 							type="text"
 							placeholder="Enter lab test name"
 						/>
@@ -64,12 +113,44 @@ const AddTest = () => {
 						</div>
 						<textarea
 							placeholder="Enter description"
-							class="form-control mb-4"
+							class="form-control mb-3"
 							id="exampleFormControlTextarea1 "
 							rows="3"
 						></textarea>
+						<div className="dropdown-center w-100 mb-3">
+							<button
+								type="button"
+								className="btn btn-light border dropdown-toggle w-100 d-flex justify-content-between align-items-center"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+								// data-bs-offset="10,20"
+							>
+								Select tags which describe the lab test
+							</button>
+							<ul className="dropdown-menu">
+								{tags.map((tag, index) => (
+									<li key={index}>
+										<div class="dropdown-item">
+											<div className="form-check ">
+												<input
+													class="form-check-input"
+													type="checkbox"
+													checked={tagStates[tag]}
+													onChange={handleCheckBoxChange}
+													value=""
+													id={tag}
+												></input>
+												<label class="form-check-label" htmlFor={tag}>
+													{tag}
+												</label>
+											</div>
+										</div>
+									</li>
+								))}
+							</ul>
+						</div>
 
-						<button className="d-flex justify-content-center btn btn-primary btn-lg  w-100">
+						<button className="d-flex justify-content-center align-items-center btn btn-primary btn-lg  w-100">
 							<span class="material-symbols-outlined me-2">task_alt</span>
 							Save
 						</button>
