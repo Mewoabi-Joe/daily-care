@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "https://backend-clinic.herokuapp.com"
+export const baseURL = "https://backend-clinic.herokuapp.com"
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
