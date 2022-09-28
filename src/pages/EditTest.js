@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 import cbc from "../assets/photos/cbc.jpg"
 // import useWindowDimensions from "../hooks/WindowsDimensionHook";
 import { tests } from "../utils/testData.js"
-import axiosInstance from "../utils/axios"
-import { useNavigate } from "react-router-dom"
+import axiosInstance, { baseURL } from "../utils/axios"
+import { useNavigate, useParams } from "react-router-dom"
 
-const AddTest = () => {
+const EditTest = () => {
+  const { testId } = useParams()
+  console.log(testId)
   const navigate = useNavigate()
   const [tagStates, setTagStates] = useState({})
   const [tags, setTags] = useState([])
@@ -24,7 +26,7 @@ const AddTest = () => {
     tags: "",
   })
 
-  const createTest = async e => {
+  const editTest = async e => {
     e.preventDefault()
     const data = new FormData()
     data.append("name", test.name)
@@ -33,13 +35,9 @@ const AddTest = () => {
     data.append("image", test.image)
     data.append("price", test.price)
 
-    const string = JSON.stringify(checkedTags)
-    console.log(string)
-    console.log(JSON.parse(string))
-
     try {
-      const res = await axiosInstance.post("/test", data)
-      navigate("/lab_tests")
+      const res = await axiosInstance.put("/test/" + testId, data)
+      navigate("/lab_test_details", { state: res.data.test })
       console.log(res)
     } catch (error) {
       console.log(error.response)
@@ -68,6 +66,27 @@ const AddTest = () => {
   }
 
   useEffect(() => {
+    const getTest = async () => {
+      try {
+        const res = await axiosInstance.get(`${baseURL}/test/${testId}`)
+        res.data.imageURL = baseURL + res.data.imagePath
+        setTest(res.data)
+        setCheckedTags(res.data.tags)
+
+        setTags(theTags)
+        let localTagStates = {}
+        console.log(test)
+        theTags.forEach(tag =>
+          res.data.tags.includes(tag)
+            ? (localTagStates[tag] = true)
+            : (localTagStates[tag] = false)
+        )
+        setTagStates(localTagStates)
+      } catch (error) {
+        console.log(error.response)
+      }
+    }
+    getTest()
     const originalTestsWithCapitalisedTags = capitalizeFirstLetterOfTagsInTest()
     let labTestTags = []
     originalTestsWithCapitalisedTags.forEach(test =>
@@ -76,10 +95,6 @@ const AddTest = () => {
     const setOflabTestTags = new Set(labTestTags)
     const theTags = Array.from(setOflabTestTags)
     // console.log("theTags", theTags);
-    setTags(theTags)
-    let localTagStates = {}
-    theTags.forEach(tag => (localTagStates[tag] = false))
-    setTagStates(localTagStates)
   }, [])
 
   const handleCheckBoxChange = e => {
@@ -117,6 +132,7 @@ const AddTest = () => {
               className="text-center d-lg-none h2 form-control form-control-lg d-block mb-3"
               type="text"
               placeholder="Enter lab test name"
+              value={test.name}
             />
             <label
               style={{ height: 310 }}
@@ -133,7 +149,7 @@ const AddTest = () => {
               ) : (
                 <img
                   style={{ height: 310, width: 482 }}
-                  src={test.imagePath}
+                  src={test.imageURL}
                   alt=""
                 />
               )}
@@ -149,7 +165,7 @@ const AddTest = () => {
                 reader.onload = function (ev) {
                   console.log(ev.target.result)
                   setTest(test => {
-                    return { ...test, imagePath: ev.target.result }
+                    return { ...test, imageURL: ev.target.result }
                   })
                 }
                 reader.readAsDataURL(file)
@@ -171,6 +187,7 @@ const AddTest = () => {
               className="d-none mb-3 d-lg-block text-center h2 form-control form-control-lg d-block "
               type="text"
               placeholder="Enter lab test name"
+              value={test.name}
             />
 
             <div class="input-group pb-3">
@@ -185,6 +202,7 @@ const AddTest = () => {
                 placeholder="Enter cost"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
+                value={test.price}
               />
               <span class="input-group-text lead" id="basic-addon2">
                 frs CFA
@@ -199,6 +217,7 @@ const AddTest = () => {
               placeholder="Enter description"
               class="form-control mb-3"
               id="exampleFormControlTextarea1 "
+              value={test.description}
               rows="3"
             ></textarea>
             <div className="dropdown-center w-100 mb-3">
@@ -235,7 +254,7 @@ const AddTest = () => {
             </div>
 
             <button
-              onClick={createTest}
+              onClick={editTest}
               className="d-flex justify-content-center align-items-center btn btn-primary btn-lg  w-100"
             >
               <span class="material-symbols-outlined me-2">task_alt</span>
@@ -248,4 +267,4 @@ const AddTest = () => {
   )
 }
 
-export default AddTest
+export default EditTest
