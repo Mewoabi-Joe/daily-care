@@ -3,4 +3,4 @@ add tag selection dropdown in add test page.
 Create test edit page
 Create Signup users page where admin can see signed up users aswell as the test they have booked
 My lab test page for users who have booked a test:
-    They can see all the test they have booked and the status whether they have already good for the test and  whether their results are out, aswell as results
+    They can see all the test they have booked and the status whether they have already good for the test and  whether their results are out, aswell as results.
