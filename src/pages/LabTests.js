@@ -27,7 +27,7 @@ const LabTests = () => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  const capitalizeFirstLetterOfTagsInTest = () => {
+  const capitalizeFirstLetterOfTagsInTest = tests => {
     return tests.map(test => {
       const capitalisedTags = test.tags.map(tag => capitalizeFirstLetter(tag))
       test.tags = capitalisedTags
@@ -39,28 +39,29 @@ const LabTests = () => {
     const getTests = async () => {
       try {
         const res = await axiosInstance.get("/test")
+        console.log(res.data)
+        const originalTestsWithCapitalisedTags =
+          capitalizeFirstLetterOfTagsInTest(res.data)
+        setOriginalTests(originalTestsWithCapitalisedTags)
+        setVariableTests(originalTestsWithCapitalisedTags)
+        let labTestTags = []
+        originalTestsWithCapitalisedTags.forEach(test =>
+          labTestTags.push(...test.tags)
+        )
+        const setOflabTestTags = new Set(labTestTags)
+        const theTags = Array.from(setOflabTestTags)
+        // console.log("theTags", theTags);
+        setTags(theTags)
+        let localTagStates = {}
+        theTags.forEach(tag => (localTagStates[tag] = false))
+        setTagStates(localTagStates)
         setTests(res.data)
       } catch (error) {
         console.log(error.response)
       }
     }
     getTests()
-
-    const originalTestsWithCapitalisedTags = capitalizeFirstLetterOfTagsInTest()
-    setOriginalTests(originalTestsWithCapitalisedTags)
-    setVariableTests(originalTestsWithCapitalisedTags)
-    let labTestTags = []
-    originalTestsWithCapitalisedTags.forEach(test =>
-      labTestTags.push(...test.tags)
-    )
-    const setOflabTestTags = new Set(labTestTags)
-    const theTags = Array.from(setOflabTestTags)
-    // console.log("theTags", theTags);
-    setTags(theTags)
-    let localTagStates = {}
-    theTags.forEach(tag => (localTagStates[tag] = false))
-    setTagStates(localTagStates)
-  }, [tests])
+  }, [])
 
   const handleCheckBoxChange = async e => {
     setSearchTerm("")
@@ -124,6 +125,11 @@ const LabTests = () => {
   const handleViewDetails = test => {
     console.log(test)
     navigate("/lab_test_details", { state: test })
+  }
+
+  const handleEditTest = test => {
+    console.log(test)
+    // navigate("/lab_test_details", { state: test })
   }
 
   return (
@@ -214,11 +220,13 @@ const LabTests = () => {
           <div>
             {variableTests.map((test, index) => (
               <MobileScreenCard
+                id={test._id}
                 name={test.name}
                 image={test.imagePath}
                 price={test.price}
                 key={index}
                 handleViewDetails={() => handleViewDetails(test)}
+                handleEditTest={() => handleEditTest(test)}
               />
             ))}
           </div>
@@ -311,10 +319,12 @@ const LabTests = () => {
                 key={index}
               >
                 <ShortCartNoBorder
+                  id={test._id}
                   image={test.imagePath}
                   name={test.name}
                   price={test.price}
                   handleViewDetails={() => handleViewDetails(test)}
+                  handleEditTest={() => handleEditTest(test)}
                 />
               </div>
             ))}

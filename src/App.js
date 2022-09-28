@@ -2,13 +2,13 @@ import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import AddTest from "./pages/AddTest"
+import EditTest from "./pages/EditTest"
 import Home from "./pages/Home"
 import LabTestDetails from "./pages/LabTestDetails"
 import LabTests from "./pages/LabTests"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 function App() {
-
   const [isAuth, setAuth] = useState(false)
 
   return (
@@ -33,10 +33,12 @@ function App() {
         <Routes>
           <Route path="/add_test" element={<AddTest />} />
         </Routes>
+        <Routes>
+          <Route path="/edit_test/:testId" element={<EditTest />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )
-
 }
 
 export default App

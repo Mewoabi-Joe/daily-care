@@ -3,6 +3,7 @@ import { baseURL } from "../utils/axios"
 import MoreOptions from "./MoreOptions"
 
 const MobileScreenCard = ({
+  id,
   image,
   name,
   price,
@@ -26,6 +27,7 @@ const MobileScreenCard = ({
             <div className="d-flex align-items-center justify-content-between">
               <h6 className="card-title mb-0">{name}</h6>
               <MoreOptions
+                testId={id}
                 handleViewDetails={handleViewDetails}
                 handleEditTest={handleEditTest}
               />
