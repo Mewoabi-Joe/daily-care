@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
@@ -36,9 +37,15 @@ function App() {
         <Routes>
           <Route path="/edit_test/:testId" element={<EditTest />} />
         </Routes>
+        <Routes>
+					<Route path="/my_lab_tests" element={<MyLabTest />} />
+				</Routes>
+				<Routes>
+					<Route path="/users" element={<Users />} />
+				</Routes>
       </BrowserRouter>
     </div>
   )
 }
 
-export default App
+export default App;

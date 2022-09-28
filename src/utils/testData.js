@@ -72,3 +72,65 @@ export const tests = [
 		price: 0,
 	},
 ];
+
+export const users = [
+	{
+		firstName: "Mewoabi",
+		lastName: "Joe",
+		email: "leon@gmail.com",
+		phoneNo: "677662876",
+		dateOfBirth: "2000-09-24",
+	},
+	{
+		firstName: "Nfor",
+		lastName: "Gildas",
+		email: "gildas@gmail.com",
+		phoneNo: "678862876",
+		dateOfBirth: "2000-09-24",
+	},
+	{
+		firstName: "Samuel",
+		lastName: "Remy",
+		email: "samuel@gmail.com",
+		phoneNo: "679662876",
+		dateOfBirth: "2000-09-24",
+	},
+	{
+		firstName: "James",
+		lastName: "Hagrins",
+		email: "james@gmail.com",
+		phoneNo: "677992876",
+		dateOfBirth: "2000-09-24",
+	},
+];
+
+export const myLabTests = [
+	{
+		name: "COVID 19",
+		image: covid,
+		price: 0,
+		booked_date: "2022-9-13",
+		state: "booked",
+	},
+	{
+		name: "Urinalysis",
+		image: uri,
+		price: 60000,
+		booked_date: "2022-9-13",
+		state: "tested",
+	},
+	{
+		name: "liver function tests",
+		image: lft,
+		price: 30000,
+		booked_date: "2022-9-13",
+		state: "results",
+	},
+	{
+		name: "Complete Blood Count(CBC)",
+		image: cbc,
+		cost: 50000,
+		booked_date: "2022-9-13",
+		state: "booked",
+	},
+];
