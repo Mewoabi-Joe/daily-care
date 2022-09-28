@@ -1,9 +1,10 @@
-
 import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import AddTest from "./pages/AddTest"
 import EditTest from "./pages/EditTest"
+import Users from "./pages/Users"
+import MyLabTest from "./pages/MyLabTest"
 import Home from "./pages/Home"
 import LabTestDetails from "./pages/LabTestDetails"
 import LabTests from "./pages/LabTests"
@@ -38,14 +39,14 @@ function App() {
           <Route path="/edit_test/:testId" element={<EditTest />} />
         </Routes>
         <Routes>
-					<Route path="/my_lab_tests" element={<MyLabTest />} />
-				</Routes>
-				<Routes>
-					<Route path="/users" element={<Users />} />
-				</Routes>
+          <Route path="/my_lab_tests" element={<MyLabTest />} />
+        </Routes>
+        <Routes>
+          <Route path="/users" element={<Users />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )
 }
 
-export default App;
+export default App
