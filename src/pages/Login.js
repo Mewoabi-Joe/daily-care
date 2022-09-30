@@ -23,18 +23,18 @@ const Login = (props) => {
 		password: "",
 	});
 
-  const login = async e => {
-    e.preventDefault()
-    try {
-      const res = await axiosInstance.post("/auth/login", user)
-      console.log(res)
-      localStorage.setItem("token", res.data.token)
-      props.setUser(res.data.user)
-      window.location.href = "/daily-care"
-    } catch (error) {
-      console.log(error.response)
-    }
-  }
+	const login = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await axiosInstance.post("/auth/login", user);
+			console.log(res);
+			localStorage.setItem("token", res.data.token);
+			props.setUser(res.data.user);
+			window.location.href = "/daily-care";
+		} catch (error) {
+			console.log(error.response);
+		}
+	};
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setUser((user) => {
@@ -42,7 +42,6 @@ const Login = (props) => {
 		});
 	};
 
-	
 	return (
 		<>
 			{/* <Navbar /> */}
@@ -60,7 +59,7 @@ const Login = (props) => {
 						/>
 					</div>
 					<form
-						class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-5 border border-primary p-5"
+						class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-5 border border-info p-5"
 						style={{ borderRadius: width >= 1200 ? "0px 20px 20px 0px" : "20px 20px 20px 20px" }}
 					>
 						<div class="mb-3">
@@ -98,7 +97,7 @@ const Login = (props) => {
 							<Link to="/verify_email">forgotten password?</Link>
 						</div>
 						<div class="text-center">
-							<button onClick={login} class="btn btn-primary" style={{ width: "100%", borderRadius: 10 }}>
+							<button onClick={login} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
 								Login
 							</button>
 						</div>

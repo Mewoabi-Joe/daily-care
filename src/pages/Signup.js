@@ -65,7 +65,7 @@ const Signup = () => {
 					/>
 				</div>
 				<form
-					class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-5 border border-primary px-5 py-4 "
+					class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-5 border border-info px-5 py-4 "
 					style={{ borderRadius: width >= 1200 ? "0px 20px 20px 0px" : "20px 20px 20px 20px" }}
 				>
 					<div class="mb-1">
@@ -172,7 +172,7 @@ const Signup = () => {
             remember me
           </div> */}
 					<div class="text-center">
-						<button onClick={register} class="btn btn-primary" style={{ width: "100%", borderRadius: 10 }}>
+						<button onClick={register} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
 							Sign up
 						</button>
 					</div>

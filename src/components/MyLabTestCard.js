@@ -25,7 +25,7 @@ const MyLabTestCard = ({ name, image, price, state, bookedDate }) => {
 							)}
 						</p>
 						<div className="d-flex justify-content-between mt-sm-1 mt-md-2 mt-lg-3 mt-xl-5">
-							<button className="btn btn-sm bg-primary">update</button>
+							<button className="btn btn-sm bg-info">update</button>
 
 							{state == "booked" ? (
 								<span className="badge bg-secondary rounded-pill d-flex align-items-center">Not done</span>
