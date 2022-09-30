@@ -23,6 +23,18 @@ const Login = (props) => {
 		password: "",
 	});
 
+  const login = async e => {
+    e.preventDefault()
+    try {
+      const res = await axiosInstance.post("/auth/login", user)
+      console.log(res)
+      localStorage.setItem("token", res.data.token)
+      props.setUser(res.data.user)
+      window.location.href = "/daily-care"
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setUser((user) => {
@@ -30,19 +42,7 @@ const Login = (props) => {
 		});
 	};
 
-	const login = async (e) => {
-		e.preventDefault();
-		try {
-			const res = await axiosInstance.post("/auth/login", user);
-			console.log(res);
-			localStorage.setItem("token", res.data.token);
-			props.setUser(res.data.user);
-			navigate("/daily-care");
-		} catch (error) {
-			console.log(error.response);
-		}
-	};
-
+	
 	return (
 		<>
 			{/* <Navbar /> */}

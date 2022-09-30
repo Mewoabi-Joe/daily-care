@@ -2,13 +2,20 @@ import React from "react"
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import useWindowDimensions from "../hooks/WindowsDimensionHook"
-import { baseURL } from "../utils/axios"
+import axiosInstance, { baseURL } from "../utils/axios"
 
 const LabTestDetails = () => {
   const { height, width } = useWindowDimensions()
   console.log("width", width)
 
   const { state } = useLocation()
+  console.log(state)
+
+  const initiatePayment = async e => {
+    e.preventDefault()
+    const res = await axiosInstance.post()
+  }
+
   return (
     // If anything disturbs add container class
     <div className="mt-lg-3">
@@ -28,6 +35,7 @@ const LabTestDetails = () => {
           <p className="pb-3">{state.description}</p>
           <div className="d-xl-flex justify-content-between">
             <button
+              onClick={initiatePayment}
               style={width > 1200 ? { width: "47%" } : { width: "100%" }}
               className="d-flex justify-content-center mb-2 btn btn-primary d-inline-block"
             >
