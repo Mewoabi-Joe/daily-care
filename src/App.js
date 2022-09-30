@@ -10,15 +10,33 @@ import LabTestDetails from "./pages/LabTestDetails"
 import LabTests from "./pages/LabTests"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-function App() {
-  const [isAuth, setAuth] = useState(false)
+import DeleteTestModal from "./components/DeleteTestModal"
+import { useEffect } from "react"
+import { connect } from "react-redux"
+import { setUser } from "./redux/actions/authActions"
+import { bindActionCreators } from "redux"
+import axiosInstance from "./utils/axios"
+function App(props) {
+  const [user, setUser] = useState({})
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axiosInstance.get("/auth/get-user")
+        props.setUser(res.data)
+        setUser(res.data)
+      } catch (error) {
+        console.log(error.response)
+      }
+    }
+    getUser()
+  }, [])
 
   return (
     <div className="App ">
       <BrowserRouter>
-        <Navbar auth={isAuth} setAuth={setAuth} />
+        <Navbar currentUser={user} />
         <Routes>
-          <Route path="/daily-care" element={<Home setAuth={setAuth} />} />
+          <Route path="/daily-care" element={<Home />} />
         </Routes>
         <Routes>
           <Route path="/signup" element={<Signup />} />
@@ -44,9 +62,22 @@ function App() {
         <Routes>
           <Route path="/users" element={<Users />} />
         </Routes>
+        <Routes>
+          <Route path="/modal" element={<DeleteTestModal />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )
 }
 
-export default App
+const mapStateToProps = ({ auth }) => {
+  return {
+    currentUser: auth.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ setUser }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

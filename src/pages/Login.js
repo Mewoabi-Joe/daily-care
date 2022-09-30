@@ -33,7 +33,7 @@ const Login = props => {
       console.log(res)
       localStorage.setItem("token", res.data.token)
       props.setUser(res.data.user)
-      navigate("/daily-care")
+      window.location.href = "/daily-care"
     } catch (error) {
       console.log(error.response)
     }
