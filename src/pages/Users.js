@@ -190,13 +190,14 @@ const Users = () => {
           </p>
         ) : (
           <div>
-            {variableUsers.map((test, index) => (
+            {variableUsers.map((user, index) => (
               <UserCard
-                firstName={test.firstName}
-                lastName={test.lastName}
-                email={test.email}
-                phoneNo={test.phoneNo}
-                dateOfBirth={test.dateOfBirth}
+                userId={user._id}
+                firstName={user.firstName}
+                lastName={user.lastName}
+                email={user.email}
+                phoneNo={user.phoneNo}
+                dateOfBirth={user.dateOfBirth}
                 index={index}
                 key={index}
                 // handleViewDetails={() => handleViewDetails(test)}

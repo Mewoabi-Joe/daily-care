@@ -57,7 +57,7 @@ function App(props) {
           <Route path="/edit_test/:testId" element={<EditTest />} />
         </Routes>
         <Routes>
-          <Route path="/my_lab_tests" element={<MyLabTest />} />
+          <Route path="/my_lab_tests/:userId" element={<MyLabTest />} />
         </Routes>
         <Routes>
           <Route path="/users" element={<Users />} />

@@ -3,17 +3,37 @@ import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import useWindowDimensions from "../hooks/WindowsDimensionHook"
 import axiosInstance, { baseURL } from "../utils/axios"
+import store from "../redux/store"
+import ConfirmBookTest from "../components/ConfirmBookTest"
 
 const LabTestDetails = () => {
   const { height, width } = useWindowDimensions()
   console.log("width", width)
 
-  const { state } = useLocation()
-  console.log(state)
+  const [modal, setModal] = useState("")
 
-  const initiatePayment = async e => {
-    e.preventDefault()
-    const res = await axiosInstance.post()
+  const { state } = useLocation()
+  const user = store.getState().auth.user
+
+  console.log("user", user)
+
+  const initiatePayment = async () => {
+    const body = {
+      userId: user.userId,
+      amount: state.price,
+      externalId: state._id,
+      email: user.email,
+      redirectUrl: `https://mewoabi-joe.github.io/daily-care/my_lab_tests/${user.userId}`,
+    }
+
+    console.log(body)
+    try {
+      const res = await axiosInstance.post(`/payment/initiate_pay`, body)
+      window.location.href = res.data.link
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -35,12 +55,18 @@ const LabTestDetails = () => {
           <p className="pb-3">{state.description}</p>
           <div className="d-xl-flex justify-content-between">
             <button
-              onClick={initiatePayment}
+              onMouseEnter={() => {
+                setModal("")
+              }}
+              onClick={() => {
+                setModal(<ConfirmBookTest initiatePayment={initiatePayment} />)
+              }}
               style={width > 1200 ? { width: "47%" } : { width: "100%" }}
               className="d-flex justify-content-center mb-2 btn btn-primary d-inline-block"
             >
               <span className="material-symbols-outlined me-2">payments</span>
               Book test
+              {modal}
             </button>
           </div>
         </div>
