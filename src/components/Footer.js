@@ -1,5 +1,5 @@
 import React from "react";
-import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
+import logo from "../assets/photos/spectrumLabSquareLogo.jpeg";
 
 const Footer = () => {
 	return (
@@ -9,13 +9,13 @@ const Footer = () => {
 					<div className="text-center d-block">
 						<img
 							className="d-block m-auto mb-2"
-							src={firstIllus}
+							src={logo}
 							alt="logo"
 							width="65rem"
 							style={{ borderRadius: "16rem", marginRight: "1.5rem", backgroundColor: "white" }}
 						/>
 						<a href="#" className="small text-decoration-none">
-							Daily Health
+							Spectrum Lab
 						</a>
 					</div>
 					<div className="d-sm-flex w-50 text-center justify-content-between mt-sm-5">
@@ -35,7 +35,7 @@ const Footer = () => {
 					<span>Privacy policy</span>
 					<span>Terms of service</span>
 				</p>
-				<p className="text-center">&copy;2022 DailyHealth</p>
+				<p className="text-center">&copy;2022 SpectrumLab</p>
 				<a className="btn btn-sm btn-secondary" style={{ position: "absolute", bottom: 5, right: 5 }} href="#">
 					<span class="material-symbols-outlined " sty>
 						arrow_upward
