@@ -14,7 +14,7 @@ const FirstSection = () => {
 						</p>
 						<p className="">
 							Ensuring you get accurate results as fast possible is our priority at{" "}
-							<span className=" text-info fw-bolder">Daily Health</span>
+							<span className=" text-info fw-bolder">Spectrum Lab</span>
 						</p>
 
 						<Link to="/lab_tests" className="btn btn-outline-info btn-lg my-5">

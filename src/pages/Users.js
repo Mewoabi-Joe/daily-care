@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import MyLabTestCard from "../components/MyLabTestCard.js";
 import UserCard from "../components/UserCard.js";
+import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import { users } from "../utils/testData.js";
 
 const Users = () => {
+	const { height, width } = useWindowDimensions();
+
 	const [filters, setFilters] = useState([]);
 
 	const [originalUsers, setOriginalUsers] = useState([]);
@@ -99,7 +102,7 @@ const Users = () => {
 				<h2 className="text-center m-0 mt-0 mt-3 d-md-none">Users</h2>
 				<div className="d-flex justify-content-evenly m-4 pb-3 pt-lg-2 pb-lg-4">
 					<h2 className="d-none mb-0 d-md-block">Users</h2>
-					<div className="input-group w-50">
+					<div className="input-group" style={{ width: width >= 576 ? "50%" : "75%" }}>
 						<button className="btn btn-outline-info" type="button" id="button-addon2" disabled>
 							<span className="material-symbols-outlined d-flex">search</span>
 						</button>

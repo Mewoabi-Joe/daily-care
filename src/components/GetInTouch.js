@@ -16,7 +16,7 @@ const GetInTouch = () => {
 						<div className="">
 							<p>Marie rurale, Bafoussam</p>
 							<p>+237 677662828</p>
-							<p>dailyhealth@gmail.com</p>
+							<p>labtests@spectrumlab.com</p>
 						</div>
 					</div>
 					<div className="d-none  w-50 d-lg-flex justify-content-evenly mb-4">
@@ -28,7 +28,7 @@ const GetInTouch = () => {
 						<div className="d-flex flex-column justify-content-around">
 							<p>Marie rurale, Bafoussam</p>
 							<p>+237 677662828</p>
-							<p>dailyhealth@gmail.com</p>
+							<p>labtests@spectrumlab.com</p>
 						</div>
 					</div>
 					<div className="text-center">

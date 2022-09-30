@@ -1,19 +1,19 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import store from "../redux/store";
-import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
+import logo from "../assets/photos/spectrumLabSquareLogo.jpeg";
 
 const Navbar = ({ auth, setAuth }) => {
 	const navigate = useNavigate();
 	return (
 		<header style={{ paddingBottom: 70 }}>
-			<nav className="navbar navbar-expand-lg fixed-top navbar-light bg-info">
+			<nav className="navbar navbar-expand-lg fixed-top navbar-light bg-info p-0">
 				<div className="container ">
 					<Link className="navbar-brand" to="/daily-care">
 						<img
-							src={firstIllus}
+							src={logo}
 							alt="logo"
-							width="65rem"
+							width="60rem"
 							style={{
 								borderRadius: "16rem",
 								marginRight: "1.5rem",
