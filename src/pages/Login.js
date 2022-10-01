@@ -9,6 +9,14 @@ import logo from "../assets/photos/spectrumLabLogo.jpeg";
 import useWindowDimensions from "../hooks/WindowsDimensionHook";
 
 const Login = (props) => {
+	setTimeout(() => {
+		const links = document.querySelectorAll(".nav-link");
+		links.forEach((link) => {
+			link.classList.remove("active");
+		});
+		document.getElementById("login").classList.add("active");
+	}, 500);
+
 	const [loading, setLoading] = useState(false);
 	const { height, width } = useWindowDimensions();
 
@@ -25,6 +33,10 @@ const Login = (props) => {
 	});
 
 	const login = async (e) => {
+		setError({
+			email: "",
+			password: "",
+		});
 		setLoading(true);
 		e.preventDefault();
 		try {

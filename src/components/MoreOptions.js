@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteTestModal from "./DeleteTestModal";
 import { connect } from "react-redux";
 
-const MoreOptions = ({ testId, handleViewDetails, currentUser, setTestId }) => {
+const MoreOptions = ({ testId, handleViewDetails, currentUser }) => {
 	const [modal, setModal] = useState("");
 	const navigate = useNavigate();
 
@@ -58,12 +58,6 @@ const MoreOptions = ({ testId, handleViewDetails, currentUser, setTestId }) => {
 									<span class="material-symbols-outlined me-2">delete_forever</span>
 									Delete test
 								</a>
-							</li>
-							<li data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setTestId(testId)}>
-								<div className="dropdown-item d-flex">
-									<span class="material-symbols-outlined me-2">delete_forever</span>
-									My delete
-								</div>
 							</li>
 						</>
 					) : null}

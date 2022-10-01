@@ -227,7 +227,7 @@ const AddTest = () => {
 							</ul>
 						</div>
 
-						<button onClick={createTest} className=" btn btn-primary btn-lg  w-100">
+						<button onClick={createTest} className=" btn btn-info btn-lg  w-100">
 							{!loading ? (
 								<div className="d-flex justify-content-center align-items-center">
 									<span class="material-symbols-outlined me-2">task_alt</span>

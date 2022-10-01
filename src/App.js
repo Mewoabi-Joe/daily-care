@@ -15,11 +15,9 @@ import { connect } from "react-redux";
 import { setUser } from "./redux/actions/authActions";
 import { bindActionCreators } from "redux";
 import axiosInstance from "./utils/axios";
-import Modal from "./components/Modal";
 function App(props) {
 	const [user, setUser] = useState({});
 
-	const [testId, setTestId] = useState(0);
 	// const [showModal, setShowModal] = useState(false)
 	useEffect(() => {
 		const getUser = async () => {
@@ -38,7 +36,6 @@ function App(props) {
 		<div className="App ">
 			<BrowserRouter>
 				<Navbar currentUser={user} />
-				<Modal testId={testId} />
 				<Routes>
 					<Route path="/daily-care" element={<Home />} />
 				</Routes>
@@ -49,7 +46,7 @@ function App(props) {
 					<Route path="/login" element={<Login />} />
 				</Routes>
 				<Routes>
-					<Route path="/lab_tests" element={<LabTests setTestId={setTestId} />} />
+					<Route path="/lab_tests" element={<LabTests />} />
 				</Routes>
 				<Routes>
 					<Route path="/lab_test_details" element={<LabTestDetails />} />
