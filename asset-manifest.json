@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/daily-care/static/css/main.b1fb4a4c.css",
-    "main.js": "/daily-care/static/js/main.6fe924cf.js",
+    "main.css": "/daily-care/static/css/main.32aad276.css",
+    "main.js": "/daily-care/static/js/main.8f640aee.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
     "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
@@ -18,11 +18,11 @@
     "static/media/hiv.webp": "/daily-care/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
-    "main.b1fb4a4c.css.map": "/daily-care/static/css/main.b1fb4a4c.css.map",
-    "main.6fe924cf.js.map": "/daily-care/static/js/main.6fe924cf.js.map"
+    "main.32aad276.css.map": "/daily-care/static/css/main.32aad276.css.map",
+    "main.8f640aee.js.map": "/daily-care/static/js/main.8f640aee.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1fb4a4c.css",
-    "static/js/main.6fe924cf.js"
+    "static/css/main.32aad276.css",
+    "static/js/main.8f640aee.js"
   ]
 }
