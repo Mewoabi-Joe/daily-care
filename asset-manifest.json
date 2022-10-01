@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.css": "/daily-care/static/css/main.e9b86724.css",
-    "main.js": "/daily-care/static/js/main.07392452.js",
+    "main.css": "/daily-care/static/css/main.b1fb4a4c.css",
+    "main.js": "/daily-care/static/js/main.6fe924cf.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
+    "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
+    "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
     "static/media/cbc.jpg": "/daily-care/static/media/cbc.55d8dec2d515693b39f1.jpg",
     "static/media/renal.jpg": "/daily-care/static/media/renal.8f0466ff7170b8a9c725.jpg",
+    "static/media/spectrumLabSquareLogo.jpeg": "/daily-care/static/media/spectrumLabSquareLogo.165be0dbf1debbf58d52.jpeg",
     "static/media/uri.webp": "/daily-care/static/media/uri.1a5a3ae158e504f284ea.webp",
     "static/media/lft.jpg": "/daily-care/static/media/lft.40a6c398f4543990a1a4.jpg",
     "static/media/tsh.jpg": "/daily-care/static/media/tsh.448f973d2799fc5f0b2a.jpg",
@@ -15,11 +18,11 @@
     "static/media/hiv.webp": "/daily-care/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
-    "main.e9b86724.css.map": "/daily-care/static/css/main.e9b86724.css.map",
-    "main.07392452.js.map": "/daily-care/static/js/main.07392452.js.map"
+    "main.b1fb4a4c.css.map": "/daily-care/static/css/main.b1fb4a4c.css.map",
+    "main.6fe924cf.js.map": "/daily-care/static/js/main.6fe924cf.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9b86724.css",
-    "static/js/main.07392452.js"
+    "static/css/main.b1fb4a4c.css",
+    "static/js/main.6fe924cf.js"
   ]
 }
