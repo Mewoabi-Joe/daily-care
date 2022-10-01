@@ -24,18 +24,18 @@ export const generateCarouselItemsForMediumScreens = (tests) => {
 	//Two carousel items for Medium screens
 	let carouselTests = [];
 	for (let i = 0; i < tests.length; i += 2) {
-		console.log("first:", `${baseURL}${tests[i].imagePath}`);
-		console.log("second:", `${baseURL}${tests[i + 1].imagePath}`);
 		if (i === 0)
 			carouselTests.push(
 				<div className="carousel-item active  " data-bs-interval="4000" key={i}>
 					<div className="d-flex justify-content-evenly">
 						<LabTestCard name={tests[i].name} image={`${baseURL}${tests[i].imagePath}`} price={tests[i].price} />
-						<LabTestCard
-							name={tests[i + 1].name}
-							image={`${baseURL}${tests[i + 1].imagePath}`}
-							price={tests[i + 1].price}
-						/>
+						{i + 1 < tests.length && (
+							<LabTestCard
+								name={tests[i + 1].name}
+								image={`${baseURL}${tests[i + 1].imagePath}`}
+								price={tests[i + 1].price}
+							/>
+						)}
 					</div>
 				</div>
 			);
@@ -66,16 +66,20 @@ export const generateCarouselItemsForLargeScreens = (tests) => {
 				<div className="carousel-item active  " data-bs-interval="4000" key={i}>
 					<div className="d-flex justify-content-evenly">
 						<LabTestCard name={tests[i].name} image={`${baseURL}${tests[i].imagePath}`} price={tests[i].price} />
-						<LabTestCard
-							name={tests[i + 1].name}
-							image={`${baseURL}${tests[i + 1].imagePath}`}
-							price={tests[i + 1].price}
-						/>
-						<LabTestCard
-							name={tests[i + 2].name}
-							image={`${baseURL}${tests[i + 2].imagePath}`}
-							price={tests[i + 2].price}
-						/>
+						{i + 1 < tests.length && (
+							<LabTestCard
+								name={tests[i + 1].name}
+								image={`${baseURL}${tests[i + 1].imagePath}`}
+								price={tests[i + 1].price}
+							/>
+						)}
+						{i + 2 < tests.length && (
+							<LabTestCard
+								name={tests[i + 2].name}
+								image={`${baseURL}${tests[i + 2].imagePath}`}
+								price={tests[i + 2].price}
+							/>
+						)}
 					</div>
 				</div>
 			);

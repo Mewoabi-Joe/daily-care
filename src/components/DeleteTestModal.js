@@ -4,9 +4,9 @@ import { Modal, Button } from "react-bootstrap";
 import axiosInstance, { baseURL } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteTestModal({ showModal, testId }) {
+export default function DeleteTestModal({ testId }) {
 	const navigate = useNavigate();
-	const [show, setShow] = useState(showModal);
+	const [show, setShow] = useState(true);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 

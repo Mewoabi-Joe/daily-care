@@ -26,7 +26,7 @@ const LabTestSection = () => {
 		getTests();
 	}, []);
 
-	return (
+	return tests.length ? (
 		<section id="labTests" className="py-5 text-light text-center" style={{ backgroundColor: "#055160" }}>
 			<div className="container">
 				<h2 className="display-5  fw-bolder ">Lab Tests</h2>
@@ -74,7 +74,7 @@ const LabTestSection = () => {
 				</div>
 			</div>
 		</section>
-	);
+	) : null;
 };
 
 export default LabTestSection;

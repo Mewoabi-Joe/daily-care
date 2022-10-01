@@ -50,7 +50,7 @@ const MoreOptions = ({ testId, handleViewDetails, currentUser }) => {
 								onClick={() => {
 									console.log("delete");
 									console.log(modal);
-									setModal(<DeleteTestModal showModal={true} testId={testId} />);
+									setModal(<DeleteTestModal testId={testId} />);
 								}}
 							>
 								<a className="dropdown-item d-flex">
