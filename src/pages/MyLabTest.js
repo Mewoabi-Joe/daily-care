@@ -23,17 +23,18 @@ const MyLabTest = () => {
     const getMyTest = async () => {
       try {
         const res = await axiosInstance.get(`/rendezvous/${userId}`)
-        const data = res.data.map(async booking => {
-          const test = await axiosInstance.get(`/test/${booking.testId}`)
-          return {
-            ...booking,
+        for (let i = 0; i < res.data.length; i++) {
+          let test = await axiosInstance.get(`/test/${res.data[i].testId}`)
+          res.data[i] = {
+            ...res.data[i],
             name: test.data.name,
             image: test.data.imagePath,
             price: test.data.price,
           }
-        })
-        setOriginalTests(data)
-        setVariableTests(data)
+        }
+
+        setOriginalTests(res.data)
+        setVariableTests(res.data)
         console.log(res)
       } catch (error) {
         console.log(error)
@@ -201,11 +202,14 @@ const MyLabTest = () => {
           <div>
             {variableTests.map((test, index) => (
               <MyLabTestCard
+                id={test._id}
                 name={test.name}
                 image={test.image}
                 price={test.price}
                 state={test.state}
                 bookedOn={test.bookedOn}
+                doneOn={test.doneOn}
+                resultsOutOn={test.resultsOutOn}
                 key={index}
                 // handleViewDetails={() => handleViewDetails(test)}
               />
