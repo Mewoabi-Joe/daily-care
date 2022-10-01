@@ -6,9 +6,10 @@ import axiosInstance, { baseURL } from "../utils/axios"
 import store from "../redux/store"
 import ConfirmBookTest from "../components/ConfirmBookTest"
 
+
 const LabTestDetails = () => {
-  const { height, width } = useWindowDimensions()
-  console.log("width", width)
+	const { height, width } = useWindowDimensions();
+	console.log("width", width);
 
   const [modal, setModal] = useState("")
 
@@ -62,7 +63,7 @@ const LabTestDetails = () => {
                 setModal(<ConfirmBookTest initiatePayment={initiatePayment} />)
               }}
               style={width > 1200 ? { width: "47%" } : { width: "100%" }}
-              className="d-flex justify-content-center mb-2 btn btn-primary d-inline-block"
+              className="d-flex justify-content-center mb-2 btn btn-info btn-primary d-inline-block"
             >
               <span className="material-symbols-outlined me-2">payments</span>
               Book test
@@ -75,4 +76,5 @@ const LabTestDetails = () => {
   )
 }
 
-export default LabTestDetails
+
+export default LabTestDetails;
