@@ -2,7 +2,7 @@ import React from "react";
 import MoreOptions from "./MoreOptions.js";
 import { baseURL } from "../utils/axios";
 
-const ShortCartNoBorder = ({ id, image, name, price, handleViewDetails, handleEditTest, setTestId }) => {
+const ShortCartNoBorder = ({ id, image, name, price, handleViewDetails, handleEditTest }) => {
 	return (
 		<div
 			className="m-auto card short-card-style text-dark text-start shadow rounded border-0 pb-4"
@@ -17,12 +17,7 @@ const ShortCartNoBorder = ({ id, image, name, price, handleViewDetails, handleEd
 			<div className="card-body pt-1">
 				<div className="d-flex align-items-center justify-content-between">
 					<h6 className="card-title mb-0">{name}</h6>
-					<MoreOptions
-						testId={id}
-						handleViewDetails={handleViewDetails}
-						handleEditTest={handleEditTest}
-						setTestId={setTestId}
-					/>
+					<MoreOptions testId={id} handleViewDetails={handleViewDetails} handleEditTest={handleEditTest} />
 				</div>
 				<p className="card-text mb-1">
 					<small>{price == 0 ? "free" : `${price} frs CFA`}</small>

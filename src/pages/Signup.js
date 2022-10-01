@@ -5,6 +5,8 @@ import axiosInstance from "../utils/axios";
 import logo from "../assets/photos/spectrumLabCroppedLogo.jpeg";
 
 const Signup = () => {
+	const [loading, setLoading] = useState(false);
+
 	const { height, width } = useWindowDimensions();
 
 	const navigate = useNavigate();
@@ -31,6 +33,7 @@ const Signup = () => {
 	};
 
 	const register = async (e) => {
+		setLoading(true);
 		e.preventDefault();
 		if (user.password != user.vPassword) {
 			setError((error) => {
@@ -42,9 +45,11 @@ const Signup = () => {
 		const { vPassword, ...rest } = user;
 		try {
 			const res = await axiosInstance.post("/auth/register", rest);
+			setLoading(false);
 			navigate("/login");
 		} catch (error) {
 			console.log(error.response);
+			setLoading(false);
 		}
 	};
 
@@ -173,7 +178,13 @@ const Signup = () => {
           </div> */}
 					<div class="text-center">
 						<button onClick={register} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
-							Sign up
+							{!loading ? (
+								"Login"
+							) : (
+								<div class="spinner-border spinner-border-sm text-secondary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							)}
 						</button>
 					</div>
 				</form>

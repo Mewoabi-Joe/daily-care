@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ShortCartNoBorder from "../components/ShortCartNoBorder.js";
 import MobileScreenCard from "../components/MobileScreenCard.js";
 import axiosInstance from "../utils/axios.js";
-const LabTests = ({ setTestId }) => {
+const LabTests = () => {
 	const [filter, setFilter] = useState("none");
 	const [originalTests, setOriginalTests] = useState([]);
 	const [tests, setTests] = useState([]);
@@ -173,7 +173,7 @@ const LabTests = ({ setTestId }) => {
 									<div class="dropdown-item">
 										<div className="form-check ">
 											<input
-												class="form-check-input"
+												class="form-check-input bg-info"
 												type="checkbox"
 												checked={tagStates[tag]}
 												onChange={handleCheckBoxChange}
@@ -192,13 +192,13 @@ const LabTests = ({ setTestId }) => {
 				</div>
 				{/* list of lab test */}
 				{testsLoading ? (
-					<div className="text-center mt-5 pt-5 text-primary">
+					<div className="text-center mt-5 pt-5 text-info">
 						<div class="spinner-grow" role="status">
 							<span class="visually-hidden">Loading...</span>
 						</div>
 					</div>
 				) : filterLoading ? (
-					<div className="text-center mt-5 pt-5 text-primary">
+					<div className="text-center mt-5 pt-5 text-info">
 						<div class="spinner-grow" role="status">
 							<span class="visually-hidden">Loading...</span>
 						</div>
@@ -282,13 +282,13 @@ const LabTests = ({ setTestId }) => {
 					</div>
 				</div>
 				{testsLoading ? (
-					<div className="text-center mt-5 pt-5 text-primary">
+					<div className="text-center mt-5 pt-5 text-info">
 						<div class="spinner-grow" role="status">
 							<span class="visually-hidden">Loading...</span>
 						</div>
 					</div>
 				) : filterLoading ? (
-					<div className="text-center mt-5 pt-5 text-primary">
+					<div className="text-center mt-5 pt-5 text-info">
 						<div class="spinner-grow" role="status">
 							<span class="visually-hidden">Loading...</span>
 						</div>
@@ -309,7 +309,6 @@ const LabTests = ({ setTestId }) => {
 									price={test.price}
 									handleViewDetails={() => handleViewDetails(test)}
 									handleEditTest={() => handleEditTest(test)}
-									setTestId={setTestId}
 								/>
 							</div>
 						))}
