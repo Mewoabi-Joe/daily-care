@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ShortCartNoBorder from "../components/ShortCartNoBorder.js";
 import MobileScreenCard from "../components/MobileScreenCard.js";
 import axiosInstance from "../utils/axios.js";
-const LabTests = () => {
+const LabTests = ({ setTestId }) => {
 	const [filter, setFilter] = useState("none");
 	const [originalTests, setOriginalTests] = useState([]);
 	const [tests, setTests] = useState([]);
@@ -228,6 +228,7 @@ const LabTests = () => {
 			<div className="d-none d-sm-block">
 				<div className="d-flex justify-content-around align-items-center my-4">
 					<h2 className="mb-0">Lab tests</h2>
+
 					<div className="input-group w-50">
 						<button className="btn btn-outline-info disabled" type="button" id="button-addon1">
 							<span className="material-symbols-outlined d-flex"> search </span>
@@ -308,6 +309,7 @@ const LabTests = () => {
 									price={test.price}
 									handleViewDetails={() => handleViewDetails(test)}
 									handleEditTest={() => handleEditTest(test)}
+									setTestId={setTestId}
 								/>
 							</div>
 						))}

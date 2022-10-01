@@ -79,7 +79,7 @@ const Signup = () => {
 							class="form-control"
 							id="first_name"
 							value={user.firstName}
-							required
+							required={true}
 						/>
 						<div class="text-danger firstname">{error.first_name ? error.first_name : ""}</div>
 					</div>
@@ -108,7 +108,7 @@ const Signup = () => {
 							type="email"
 							class="form-control"
 							id="email"
-							required
+							required={true}
 						/>
 						<div class="text-danger email">{error.email ? error.email : ""}</div>
 					</div>
@@ -123,7 +123,7 @@ const Signup = () => {
 							value={user.phoneNo}
 							class="form-control"
 							id="number"
-							required
+							required={true}
 						/>
 						<div class="text-danger number">{error.number ? error.number : ""}</div>
 					</div>
@@ -138,7 +138,7 @@ const Signup = () => {
 							type="password"
 							class="form-control"
 							id="password"
-							required
+							required={true}
 						/>
 						<div class="text-danger password">{error.password ? error.password : ""}</div>
 					</div>
@@ -153,7 +153,7 @@ const Signup = () => {
 							type="password"
 							class="form-control"
 							id="vPassword"
-							required
+							required={true}
 						/>
 						<div class="text-danger vPassword">{error.vPassword ? error.vPassword : ""}</div>
 					</div>
@@ -162,7 +162,7 @@ const Signup = () => {
 						<label for="vPassword" class="form-label">
 							Date of birth:
 						</label>
-						<input onChange={handleChange} name="dateOfBirth" type="date" class="form-control" required />
+						<input onChange={handleChange} name="dateOfBirth" type="date" class="form-control" required={true} />
 						<div class="text-danger vPassword">{error.vPassword ? error.vPassword : ""}</div>
 					</div>
 					<br />

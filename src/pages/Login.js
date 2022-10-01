@@ -9,6 +9,7 @@ import logo from "../assets/photos/spectrumLabLogo.jpeg";
 import useWindowDimensions from "../hooks/WindowsDimensionHook";
 
 const Login = (props) => {
+	const [loading, setLoading] = useState(false);
 	const { height, width } = useWindowDimensions();
 
 	const navigate = useNavigate();
@@ -24,6 +25,7 @@ const Login = (props) => {
 	});
 
 	const login = async (e) => {
+		setLoading(true);
 		e.preventDefault();
 		try {
 			const res = await axiosInstance.post("/auth/login", user);
@@ -31,8 +33,16 @@ const Login = (props) => {
 			localStorage.setItem("token", res.data.token);
 			props.setUser(res.data.user);
 			window.location.href = "/daily-care";
+			setLoading(false);
 		} catch (error) {
-			console.log(error.response);
+			// console.log(error);
+			const err = error.response.data;
+			console.log("err", err);
+			setError({
+				email: err.includes("email") ? err : "",
+				password: err.includes("password") ? err : "",
+			});
+			setLoading(false);
 		}
 	};
 	const handleChange = (e) => {
@@ -98,7 +108,13 @@ const Login = (props) => {
 						</div>
 						<div class="text-center">
 							<button onClick={login} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
-								Login
+								{!loading ? (
+									"Login"
+								) : (
+									<div class="spinner-border spinner-border-sm text-secondary" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								)}
 							</button>
 						</div>
 					</form>
