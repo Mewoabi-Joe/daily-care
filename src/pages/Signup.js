@@ -5,7 +5,10 @@ import axiosInstance from "../utils/axios"
 import logo from "../assets/photos/spectrumLabCroppedLogo.jpeg"
 
 const Signup = () => {
-  const { height, width } = useWindowDimensions()
+
+	const [loading, setLoading] = useState(false);
+
+	const { height, width } = useWindowDimensions();
 
   const navigate = useNavigate()
   const [user, setUser] = useState({
@@ -58,6 +61,7 @@ const Signup = () => {
       setError(errorObj)
     }
   }
+
 
   return (
     <div class="container-lg">
@@ -205,19 +209,22 @@ const Signup = () => {
             <input name="radio" type="radio" id=""></input>
             remember me
           </div> */}
-          <div class="text-center">
-            <button
-              onClick={register}
-              class="btn btn-info"
-              style={{ width: "100%", borderRadius: 10 }}
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  )
-}
+
+					<div class="text-center">
+						<button onClick={register} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
+							{!loading ? (
+								"Login"
+							) : (
+								<div class="spinner-border spinner-border-sm text-secondary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							)}
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
+};
 
 export default Signup
