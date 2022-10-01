@@ -101,11 +101,6 @@ const Users = () => {
 
 	// const navigate = useNavigate();
 
-	// const handleViewDetails = (test) => {
-	// 	console.log(test);
-	// 	navigate("/lab_test_details", { state: test });
-	// };
-
 	return (
 		<div className="container">
 			{/* for mobile to sm screens */}

@@ -63,7 +63,10 @@ const Navbar = ({ setAuth, currentUser }) => {
                   </Link>
                 </>
               ) : (
-                <Link className="nav-link" to="/my_lab_tests">
+                <Link
+                  className="nav-link"
+                  to={"/my_lab_tests/" + currentUser.userId}
+                >
                   My lab tests
                 </Link>
               )}
