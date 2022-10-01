@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 // import { tests } from "../utils/testData.js"
+
 import ShortCartNoBorder from "../components/ShortCartNoBorder.js";
 import MobileScreenCard from "../components/MobileScreenCard.js";
 import axiosInstance from "../utils/axios.js";
@@ -20,116 +21,119 @@ const LabTests = () => {
 		case "none":
 			break;
 
-		default:
-			break;
-	}
+    default:
+      break
+  }
 
-	function capitalizeFirstLetter(string) {
-		return string.charAt(0).toUpperCase() + string.slice(1);
-	}
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
 
-	const capitalizeFirstLetterOfTagsInTest = (tests) => {
-		return tests.map((test) => {
-			const capitalisedTags = test.tags.map((tag) => capitalizeFirstLetter(tag));
-			test.tags = capitalisedTags;
-			return test;
-		});
-	};
+  const capitalizeFirstLetterOfTagsInTest = tests => {
+    return tests.map(test => {
+      const capitalisedTags = test.tags.map(tag => capitalizeFirstLetter(tag))
+      test.tags = capitalisedTags
+      return test
+    })
+  }
 
-	useEffect(() => {
-		const getTests = async () => {
-			try {
-				const res = await axiosInstance.get("/test");
-				console.log(res.data);
-				const originalTestsWithCapitalisedTags = capitalizeFirstLetterOfTagsInTest(res.data);
-				setOriginalTests(originalTestsWithCapitalisedTags);
-				setVariableTests(originalTestsWithCapitalisedTags);
-				let labTestTags = [];
-				originalTestsWithCapitalisedTags.forEach((test) => labTestTags.push(...test.tags));
-				const setOflabTestTags = new Set(labTestTags);
-				const theTags = Array.from(setOflabTestTags);
-				// console.log("theTags", theTags);
-				setTags(theTags);
-				let localTagStates = {};
-				theTags.forEach((tag) => (localTagStates[tag] = false));
-				setTagStates(localTagStates);
-				setTests(res.data);
-				setTestsLoading(false);
-			} catch (error) {
-				console.log(error.response);
-			}
-		};
-		getTests();
-	}, []);
+  useEffect(() => {
+    const getTests = async () => {
+      try {
+        const res = await axiosInstance.get("/test")
+        console.log(res.data)
+        const originalTestsWithCapitalisedTags =
+          capitalizeFirstLetterOfTagsInTest(res.data)
+        setOriginalTests(originalTestsWithCapitalisedTags)
+        setVariableTests(originalTestsWithCapitalisedTags)
+        let labTestTags = []
+        originalTestsWithCapitalisedTags.forEach(test =>
+          labTestTags.push(...test.tags)
+        )
+        const setOflabTestTags = new Set(labTestTags)
+        const theTags = Array.from(setOflabTestTags)
+        // console.log("theTags", theTags);
+        setTags(theTags)
+        let localTagStates = {}
+        theTags.forEach(tag => (localTagStates[tag] = false))
+        setTagStates(localTagStates)
+        setTests(res.data)
+        setTestsLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getTests()
+  }, [])
 
-	const handleCheckBoxChange = async (e) => {
-		setSearchTerm("");
-		setFilterLoading(true);
-		let localTagStates = tagStates;
-		localTagStates[e.target.id] = e.target.checked;
-		setTagStates(localTagStates);
-		filterVariableTest();
-		setTimeout(() => {
-			setFilterLoading(false);
-		}, 1000);
-	};
+  const handleCheckBoxChange = async e => {
+    setSearchTerm("")
+    setFilterLoading(true)
+    let localTagStates = tagStates
+    localTagStates[e.target.id] = e.target.checked
+    setTagStates(localTagStates)
+    filterVariableTest()
+    setTimeout(() => {
+      setFilterLoading(false)
+    }, 1000)
+  }
 
-	const filterVariableTest = () => {
-		const tagKeys = Object.keys(tagStates);
-		const checkedTags = tagKeys.filter((tagKey) => tagStates[tagKey] === true);
-		console.log("checkedTags", checkedTags);
-		const filteredOriginalTest = originalTests.filter((test) => {
-			let match = false;
-			test.tags.forEach((tag) => {
-				if (checkedTags.includes(tag)) {
-					match = true;
-				}
-			});
-			if (match) return true;
-		});
-		if (filteredOriginalTest.length) {
-			setVariableTests(filteredOriginalTest);
-		} else {
-			setVariableTests(originalTests);
-		}
-	};
+  const filterVariableTest = () => {
+    const tagKeys = Object.keys(tagStates)
+    const checkedTags = tagKeys.filter(tagKey => tagStates[tagKey] === true)
+    console.log("checkedTags", checkedTags)
+    const filteredOriginalTest = originalTests.filter(test => {
+      let match = false
+      test.tags.forEach(tag => {
+        if (checkedTags.includes(tag)) {
+          match = true
+        }
+      })
+      if (match) return true
+    })
+    if (filteredOriginalTest.length) {
+      setVariableTests(filteredOriginalTest)
+    } else {
+      setVariableTests(originalTests)
+    }
+  }
 
-	const unTickAllCheckBoxes = () => {
-		const tagKeys = Object.keys(tagStates);
-		const localTagStates = tagStates;
-		tagKeys.forEach((tagKey) => (localTagStates[tagKey] = false));
-		console.log(localTagStates);
-		setTagStates(localTagStates);
-	};
+  const unTickAllCheckBoxes = () => {
+    const tagKeys = Object.keys(tagStates)
+    const localTagStates = tagStates
+    tagKeys.forEach(tagKey => (localTagStates[tagKey] = false))
+    console.log(localTagStates)
+    setTagStates(localTagStates)
+  }
 
-	const handleSearchInputChange = (text) => {
-		unTickAllCheckBoxes();
-		setSearchTerm(text);
-		console.log("variableTests", variableTests);
-		const testsCorrespondingToSearch = originalTests.filter((test) => {
-			console.log("text", text);
-			return test.name.toLowerCase().includes(text.toLowerCase());
-		});
-		console.log("testsCorrespondingToSearch", testsCorrespondingToSearch);
-		setVariableTests(testsCorrespondingToSearch);
-	};
+  const handleSearchInputChange = text => {
+    unTickAllCheckBoxes()
+    setSearchTerm(text)
+    console.log("variableTests", variableTests)
+    const testsCorrespondingToSearch = originalTests.filter(test => {
+      console.log("text", text)
+      return test.name.toLowerCase().includes(text.toLowerCase())
+    })
+    console.log("testsCorrespondingToSearch", testsCorrespondingToSearch)
+    setVariableTests(testsCorrespondingToSearch)
+  }
 
-	const handleEmptySearch = () => {
-		setSearchTerm("");
-		setVariableTests(originalTests);
-	};
+  const handleEmptySearch = () => {
+    setSearchTerm("")
+    setVariableTests(originalTests)
+  }
 
-	const navigate = useNavigate();
+  const navigate = useNavigate()
 
-	const handleViewDetails = (test) => {
-		console.log(test);
-		navigate("/lab_test_details", { state: test });
-	};
+  const handleViewDetails = test => {
+    console.log(test)
+    navigate("/lab_test_details", { state: test })
+  }
 
-	const handleEditTest = (test) => {
-		console.log(test);
-		// navigate("/lab_test_details", { state: test })
-	};
+  const handleEditTest = test => {
+    console.log(test)
+    // navigate("/lab_test_details", { state: test })
+  }
 
 	return (
 		<div className="container">
@@ -319,4 +323,4 @@ const LabTests = () => {
 	);
 };
 
-export default LabTests;
+export default LabTests
