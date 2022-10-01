@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg"
-import logo from "../assets/photos/spectrumLabSquareLogo.jpeg";
+import logo from "../assets/photos/spectrumLabSquareLogo.jpeg"
 
 const Navbar = ({ setAuth, currentUser }) => {
   console.log(currentUser)
@@ -62,14 +62,14 @@ const Navbar = ({ setAuth, currentUser }) => {
                     Users
                   </Link>
                 </>
-              ) : (
+              ) : currentUser.userId ? (
                 <Link
                   className="nav-link"
                   to={"/my_lab_tests/" + currentUser.userId}
                 >
                   My lab tests
                 </Link>
-              )}
+              ) : null}
               {JSON.stringify(currentUser) === JSON.stringify({}) ? (
                 <>
                   <Link className="nav-link" to="/signup">
