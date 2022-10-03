@@ -68,7 +68,7 @@ const Login = (props) => {
 		<>
 			{/* <Navbar /> */}
 			<div class="container-lg">
-				<h3 class="text-center my-3">Log in to DailyHealth</h3>
+				<h3 class="text-center my-3">Log in to Spectrum Lab</h3>
 				<small className="text-center d-block">Already created an account? Go ahead fill in the info and login</small>
 
 				<div class="row justify-content-center mb-5 mt-4 g-0 ">

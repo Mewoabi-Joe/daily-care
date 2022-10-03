@@ -35,6 +35,7 @@ const LabTestDetails = () => {
       // redirectUrl: `https://mewoabi-joe.github.io/my_lab_tests/${user.userId}`,
     }
 
+
     console.log(body)
     try {
       const res = await axiosInstance.post(`/payment/initiate_pay`, body)
