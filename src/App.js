@@ -15,6 +15,8 @@ import { connect } from "react-redux";
 import { setUser } from "./redux/actions/authActions";
 import { bindActionCreators } from "redux";
 import axiosInstance from "./utils/axios";
+import Profile from "./pages/Profile";
+import ProfileEdit from "./pages/ProfileEdit";
 function App(props) {
 	const [user, setUser] = useState({});
 
@@ -59,6 +61,12 @@ function App(props) {
 				</Routes>
 				<Routes>
 					<Route path="/my_lab_tests/:userId" element={<MyLabTest />} />
+				</Routes>
+				<Routes>
+					<Route path="/profile/:userId" element={<Profile />} />
+				</Routes>
+				<Routes>
+					<Route path="/profileEdit/:userId" element={<ProfileEdit />} />
 				</Routes>
 				<Routes>
 					<Route path="/users" element={<Users />} />

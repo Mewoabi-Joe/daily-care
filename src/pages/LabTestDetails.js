@@ -32,7 +32,7 @@ const LabTestDetails = () => {
 			amount: state.price,
 			externalId: state._id,
 			email: user.email,
-			redirectUrl: `https://mewoabi-joe.github.io/my_lab_tests/${user.userId}`,
+			// redirectUrl: `https://mewoabi-joe.github.io/my_lab_tests/${user.userId}`,
 		};
 
 		console.log(body);

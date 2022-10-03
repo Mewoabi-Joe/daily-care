@@ -81,17 +81,34 @@ const Navbar = ({ setAuth, currentUser }) => {
 									</Link>
 								</>
 							) : (
-								<div
-									onClick={() => {
-										localStorage.setItem("token", "");
+								<>
+									<div
+										onClick={() => {
+											localStorage.setItem("token", "");
 
-										window.location.href = "/login";
-									}}
-									className="nav-link"
-									to="/signup"
-								>
-									Log out
-								</div>
+											window.location.href = "/login";
+										}}
+										className="nav-link"
+										to="/signup"
+									>
+										Log out
+									</div>
+									<Link className="text-decoration-none" to={"/profile/" + currentUser.userId}>
+										<div
+											style={{
+												width: "40px",
+												height: "40px",
+												verticalAlign: "middle",
+												backgroundColor: "#2c387e",
+											}}
+											className="d-flex col-4 text-center rounded-circle text-light justify-content-center align-items-center  "
+										>
+											{currentUser.firstName.charAt(0).toUpperCase() +
+												" " +
+												currentUser.lastName.charAt(0).toUpperCase()}
+										</div>
+									</Link>
+								</>
 							)}
 						</div>
 					</div>
