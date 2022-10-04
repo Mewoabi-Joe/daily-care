@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import AddTest from "./pages/AddTest"
 import EditTest from "./pages/EditTest"
@@ -20,7 +20,6 @@ import ProfileEdit from "./pages/ProfileEdit"
 function App(props) {
   const [user, setUser] = useState({})
 
-  // const [showModal, setShowModal] = useState(false)
   useEffect(() => {
     const getUser = async () => {
       try {
