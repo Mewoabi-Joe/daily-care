@@ -38,7 +38,7 @@ function App(props) {
       <BrowserRouter>
         <Navbar currentUser={user} />
         <Routes>
-          <Route path="/daily-care" element={<Home />} />
+          <Route path="/spectrumlab" element={<Home />} />
         </Routes>
         <Routes>
           <Route path="/signup" element={<Signup />} />
