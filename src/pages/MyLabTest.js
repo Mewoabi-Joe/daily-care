@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import MyLabTestCard from "../components/MyLabTestCard.js";
 import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import axiosInstance from "../utils/axios.js";
@@ -7,9 +7,8 @@ import { myLabTests } from "../utils/testData.js";
 
 const MyLabTest = () => {
 	const [loading, setLoading] = useState(false);
-
+	const { state } = useLocation();
 	const { height, width } = useWindowDimensions();
-
 	const { userId } = useParams();
 	console.log(userId);
 	const [filters, setFilters] = useState([]);
@@ -29,6 +28,7 @@ const MyLabTest = () => {
 			try {
 				setLoading(true);
 				const res = await axiosInstance.get(`/rendezvous/${userId}`);
+
 				for (let i = 0; i < res.data.length; i++) {
 					let test = await axiosInstance.get(`/test/${res.data[i].testId}`);
 					res.data[i] = {
@@ -47,6 +47,7 @@ const MyLabTest = () => {
 				console.log(error);
 			}
 		};
+
 		getMyTest();
 
 		const theFilters = ["booked lab tests", "tested", "results out"];
@@ -68,25 +69,7 @@ const MyLabTest = () => {
 		}, 1000);
 	};
 
-	const filterVariableTest = () => {
-		// const tagKeys = Object.keys(tagStates);
-		// const checkedTags = tagKeys.filter((tagKey) => tagStates[tagKey] === true);
-		// console.log("checkedTags", checkedTags);
-		// const filteredOriginalTest = originalTests.filter((test) => {
-		// 	let match = false;
-		// 	test.tags.forEach((tag) => {
-		// 		if (checkedTags.includes(tag)) {
-		// 			match = true;
-		// 		}
-		// 	});
-		// 	if (match) return true;
-		// });
-		// if (filteredOriginalTest.length) {
-		// 	setVariableTests(filteredOriginalTest);
-		// } else {
-		// 	setVariableTests(originalTests);
-		// }
-	};
+	const filterVariableTest = () => {};
 
 	const unTickAllCheckBoxes = () => {
 		const filterKeys = Object.keys(filterStates);
@@ -113,20 +96,12 @@ const MyLabTest = () => {
 		setVariableTests(originalTests);
 	};
 
-	// const navigate = useNavigate();
-
-	// const handleViewDetails = (test) => {
-	// 	console.log(test);
-	// 	navigate("/lab_test_details", { state: test });
-	// };
-
 	return (
 		<div className="container">
 			{/* for mobile to sm screens */}
 			<div className="pt-3">
-				<h2 className="text-center  mt-3 d-md-none">My lab tests</h2>
+				<h4 className="text-center pt-lg-4">{state} lab tests</h4>
 				<div className="d-flex justify-content-evenly m-4 py-lg-3">
-					<h2 className="d-none mb-0 d-md-block">My lab tests</h2>
 					<div className="input-group" style={{ width: width >= 576 ? "50%" : "75%" }}>
 						<button className="btn btn-outline-info" type="button" id="button-addon2" disabled>
 							<span className="material-symbols-outlined d-flex">search</span>
@@ -146,39 +121,6 @@ const MyLabTest = () => {
 							</button>
 						)}
 					</div>
-					{/* <div className="dropdown-center">
-            <button
-              type="button"
-              className="btn btn-info dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              data-bs-auto-close="outside"
-              // data-bs-offset="10,20"
-            >
-              filter
-            </button>
-            <ul className="dropdown-menu">
-              {filters.map(filter => (
-                <li>
-                  <div class="dropdown-item">
-                    <div className="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={filterStates[filter]}
-                        onChange={handleCheckBoxChange}
-                        value=""
-                        id={filter}
-                      ></input>
-                      <label class="form-check-label" htmlFor={filter}>
-                        {filter}
-                      </label>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div> */}
 				</div>
 				{/* list of lab test */}
 				{loading ? (
