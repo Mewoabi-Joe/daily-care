@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/daily-care/static/css/main.efcbbf97.css",
-    "main.js": "/daily-care/static/js/main.483af2ce.js",
-    "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
-    "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
-    "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
-    "static/media/cbc.jpg": "/daily-care/static/media/cbc.55d8dec2d515693b39f1.jpg",
-    "static/media/renal.jpg": "/daily-care/static/media/renal.8f0466ff7170b8a9c725.jpg",
-    "static/media/spectrumLabSquareLogo.jpeg": "/daily-care/static/media/spectrumLabSquareLogo.165be0dbf1debbf58d52.jpeg",
-    "static/media/uri.webp": "/daily-care/static/media/uri.1a5a3ae158e504f284ea.webp",
-    "static/media/lft.jpg": "/daily-care/static/media/lft.40a6c398f4543990a1a4.jpg",
-    "static/media/tsh.jpg": "/daily-care/static/media/tsh.448f973d2799fc5f0b2a.jpg",
-    "static/media/undraw_medicine_b-1-ol.svg": "/daily-care/static/media/undraw_medicine_b-1-ol.2489b5716d6387c9bc1291a5f0ba7542.svg",
-    "static/media/undraw_doctor_kw-5-l.svg": "/daily-care/static/media/undraw_doctor_kw-5-l.25675365dfd8967f0bb6de74140415a4.svg",
-    "static/media/covid.webp": "/daily-care/static/media/covid.adc3ea28bfd55da595ee.webp",
-    "static/media/undraw_medical_care_movn.svg": "/daily-care/static/media/undraw_medical_care_movn.7619c2a750cf9d2376082b814dd866d3.svg",
-    "static/media/hiv.webp": "/daily-care/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
-    "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
-    "index.html": "/daily-care/index.html",
-    "main.efcbbf97.css.map": "/daily-care/static/css/main.efcbbf97.css.map",
-    "main.483af2ce.js.map": "/daily-care/static/js/main.483af2ce.js.map"
+    "main.css": "/spectrum-lab/static/css/main.efcbbf97.css",
+    "main.js": "/spectrum-lab/static/js/main.b3786035.js",
+    "static/media/ghono.jpg": "/spectrum-lab/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
+    "static/media/spectrumLabLogo.jpeg": "/spectrum-lab/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
+    "static/media/spectrumLabCroppedLogo.jpeg": "/spectrum-lab/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
+    "static/media/cbc.jpg": "/spectrum-lab/static/media/cbc.55d8dec2d515693b39f1.jpg",
+    "static/media/renal.jpg": "/spectrum-lab/static/media/renal.8f0466ff7170b8a9c725.jpg",
+    "static/media/spectrumLabSquareLogo.jpeg": "/spectrum-lab/static/media/spectrumLabSquareLogo.165be0dbf1debbf58d52.jpeg",
+    "static/media/uri.webp": "/spectrum-lab/static/media/uri.1a5a3ae158e504f284ea.webp",
+    "static/media/lft.jpg": "/spectrum-lab/static/media/lft.40a6c398f4543990a1a4.jpg",
+    "static/media/tsh.jpg": "/spectrum-lab/static/media/tsh.448f973d2799fc5f0b2a.jpg",
+    "static/media/undraw_medicine_b-1-ol.svg": "/spectrum-lab/static/media/undraw_medicine_b-1-ol.2489b5716d6387c9bc1291a5f0ba7542.svg",
+    "static/media/undraw_doctor_kw-5-l.svg": "/spectrum-lab/static/media/undraw_doctor_kw-5-l.25675365dfd8967f0bb6de74140415a4.svg",
+    "static/media/covid.webp": "/spectrum-lab/static/media/covid.adc3ea28bfd55da595ee.webp",
+    "static/media/undraw_medical_care_movn.svg": "/spectrum-lab/static/media/undraw_medical_care_movn.7619c2a750cf9d2376082b814dd866d3.svg",
+    "static/media/hiv.webp": "/spectrum-lab/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
+    "static/media/undraw_scientist_0ft9.svg": "/spectrum-lab/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
+    "index.html": "/spectrum-lab/index.html",
+    "main.efcbbf97.css.map": "/spectrum-lab/static/css/main.efcbbf97.css.map",
+    "main.b3786035.js.map": "/spectrum-lab/static/js/main.b3786035.js.map"
   },
   "entrypoints": [
     "static/css/main.efcbbf97.css",
-    "static/js/main.483af2ce.js"
+    "static/js/main.b3786035.js"
   ]
 }
