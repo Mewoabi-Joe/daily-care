@@ -38,11 +38,8 @@ function App(props) {
       <BrowserRouter>
         <Navbar currentUser={user} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/daily-care" element={<Home />} />
         </Routes>
-        {/* <Route exact path="/">
-          <Navigate to="/daily-care" />
-        </Route> */}
         <Routes>
           <Route path="/signup" element={<Signup />} />
         </Routes>
