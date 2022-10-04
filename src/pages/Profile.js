@@ -33,7 +33,7 @@ const Profile = () => {
 		<div class="container-lg">
 			<h3 class="text-center mt-4 my-5">My Profile</h3>
 
-			<div className="m-auto ps-5" style={{ width: 500 }}>
+			<div className="m-auto ps-5" style={{ maxWidth: 500 }}>
 				<div className="ms-2">
 					<div className="d-flex mb-4">
 						<p className="w-50">First name</p>
