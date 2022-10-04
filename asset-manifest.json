@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/daily-care/static/css/main.efcbbf97.css",
-    "main.js": "/daily-care/static/js/main.2f0bda4e.js",
+    "main.js": "/daily-care/static/js/main.483af2ce.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
     "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
@@ -19,10 +19,10 @@
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
     "main.efcbbf97.css.map": "/daily-care/static/css/main.efcbbf97.css.map",
-    "main.2f0bda4e.js.map": "/daily-care/static/js/main.2f0bda4e.js.map"
+    "main.483af2ce.js.map": "/daily-care/static/js/main.483af2ce.js.map"
   },
   "entrypoints": [
     "static/css/main.efcbbf97.css",
-    "static/js/main.2f0bda4e.js"
+    "static/js/main.483af2ce.js"
   ]
 }
