@@ -138,7 +138,7 @@ const MyLabTest = () => {
 				) : !variableTests.length ? (
 					<p className="fw-bold text-center mt-5 pt-5">
 						<span class="material-symbols-outlined ">search_off</span>
-						<span className="ms-2">No Booked lab test booked yet</span>
+						<span className="ms-2">No lab test booked yet</span>
 					</p>
 				) : (
 					<div>
