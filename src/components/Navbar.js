@@ -73,62 +73,82 @@ const Navbar = ({ setAuth, currentUser }) => {
                     to="/add_test"
                   >
                     Add test
-                  
-									<Link onClick={handleLinkClick} className="nav-link" to="/users">
-										Users
-									</Link>
-								</>
-							) : currentUser.userId ? (
-								<Link onClick={handleLinkClick} className="nav-link" to={"/my_lab_tests/" + currentUser.userId}>
-									My lab tests
-								</Link>
-							) : null}
-							{JSON.stringify(currentUser) === JSON.stringify({}) ? (
-								<>
-									<Link onClick={handleLinkClick} className="nav-link" to="/signup">
-										Signup
-									</Link>
-									<Link id="login" onClick={handleLinkClick} className="nav-link" to="/login">
-										Login
-									</Link>
-								</>
-							) : (
-								<>
-									<div
-										onClick={() => {
-											localStorage.setItem("token", "");
+                  </Link>
 
-											window.location.href = "/login";
-										}}
-										className="nav-link"
-										to="/signup"
-									>
-										Log out
-									</div>
-									<Link className="text-decoration-none" to={"/profile/" + currentUser.userId}>
-										<div
-											style={{
-												width: "40px",
-												height: "40px",
-												verticalAlign: "middle",
-												backgroundColor: "#2c387e",
-											}}
-											className="d-flex col-4 text-center rounded-circle text-light justify-content-center align-items-center  "
-										>
-											{currentUser.firstName.charAt(0).toUpperCase() +
-												" " +
-												currentUser.lastName.charAt(0).toUpperCase()}
-										</div>
-									</Link>
-								</>
-							)}
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
-	);
-};
+                  <Link
+                    onClick={handleLinkClick}
+                    className="nav-link"
+                    to="/users"
+                  >
+                    Users
+                  </Link>
+                </>
+              ) : currentUser.userId ? (
+                <Link
+                  onClick={handleLinkClick}
+                  className="nav-link"
+                  to={"/my_lab_tests/" + currentUser.userId}
+                >
+                  My lab tests
+                </Link>
+              ) : null}
+              {JSON.stringify(currentUser) === JSON.stringify({}) ? (
+                <>
+                  <Link
+                    onClick={handleLinkClick}
+                    className="nav-link"
+                    to="/signup"
+                  >
+                    Signup
+                  </Link>
+                  <Link
+                    id="login"
+                    onClick={handleLinkClick}
+                    className="nav-link"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <div
+                    onClick={() => {
+                      localStorage.setItem("token", "")
 
+                      window.location.href = "/login"
+                    }}
+                    className="nav-link"
+                    to="/signup"
+                  >
+                    Log out
+                  </div>
+                  <Link
+                    className="text-decoration-none"
+                    to={"/profile/" + currentUser.userId}
+                  >
+                    <div
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        verticalAlign: "middle",
+                        backgroundColor: "#2c387e",
+                      }}
+                      className="d-flex col-4 text-center rounded-circle text-light justify-content-center align-items-center  "
+                    >
+                      {currentUser.firstName.charAt(0).toUpperCase() +
+                        " " +
+                        currentUser.lastName.charAt(0).toUpperCase()}
+                    </div>
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  )
+}
 
 export default Navbar
