@@ -32,9 +32,8 @@ const LabTestDetails = () => {
       amount: state.price,
       externalId: state._id,
       email: user.email,
-      // redirectUrl: `https://mewoabi-joe.github.io/my_lab_tests/${user.userId}`,
+      redirectUrl: `https://frontend-clinic.herokuapp.com/lab_test_details/${user.userId}`,
     }
-
 
     console.log(body)
     try {
