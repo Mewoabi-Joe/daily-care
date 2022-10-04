@@ -39,7 +39,7 @@ function App(props) {
 			<BrowserRouter basename="">
 				<Navbar currentUser={user} />
 				<Routes>
-					<Route path="/spectrum-lab" element={<Home />} />
+					<Route path="/daily-care" element={<Home />} />
 				</Routes>
 				<Routes>
 					<Route path="/signup" element={<Signup />} />

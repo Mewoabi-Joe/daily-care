@@ -44,7 +44,7 @@ const Login = (props) => {
 			console.log(res);
 			localStorage.setItem("token", res.data.token);
 			props.setUser(res.data.user);
-			window.location.href = "/spectrum-lab";
+			window.location.href = "/daily-care";
 			setLoading(false);
 		} catch (error) {
 			// console.log(error);

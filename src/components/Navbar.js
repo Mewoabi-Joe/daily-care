@@ -18,7 +18,7 @@ const Navbar = ({ setAuth, currentUser }) => {
 		<header style={{ paddingBottom: 70 }}>
 			<nav className="navbar navbar-expand-lg fixed-top navbar-light bg-info p-0">
 				<div className="container ">
-					<Link className="navbar-brand" to="/spectrum-lab">
+					<Link className="navbar-brand" to="/daily-care">
 						<img
 							src={logo}
 							alt="logo"
@@ -44,7 +44,7 @@ const Navbar = ({ setAuth, currentUser }) => {
 					</button>
 					<div className="collapse navbar-collapse " id="navbarNavAltMarkup">
 						<div className="navbar-nav ms-auto">
-							<Link onClick={handleLinkClick} className="nav-link active" aria-current="page" to="/spectrum-lab">
+							<Link onClick={handleLinkClick} className="nav-link active" aria-current="page" to="/daily-care">
 								Home
 							</Link>
 							{/* <a className="nav-link" href="#services">
