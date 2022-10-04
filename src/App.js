@@ -36,7 +36,7 @@ function App(props) {
 
 	return (
 		<div className="App ">
-			<BrowserRouter basename="">
+			<BrowserRouter>
 				<Navbar currentUser={user} />
 				<Routes>
 					<Route path="/daily-care" element={<Home />} />
