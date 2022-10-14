@@ -101,7 +101,7 @@ const MyLabTest = () => {
 		<div className="container">
 			{/* for mobile to sm screens */}
 			<div className="pt-3">
-				<h4 className="text-center pt-lg-4">{state} lab tests</h4>
+				<h4 className="text-center pt-lg-4">{state}My lab tests</h4>
 				<div className="d-flex justify-content-evenly m-4 py-lg-3">
 					<div className="input-group" style={{ width: width >= 576 ? "50%" : "75%" }}>
 						<button className="btn btn-outline-info" type="button" id="button-addon2" disabled>

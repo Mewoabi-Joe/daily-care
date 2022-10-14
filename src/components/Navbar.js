@@ -97,7 +97,11 @@ const Navbar = ({ setAuth, currentUser }) => {
 									>
 										Log out
 									</div>
-									<Link className="text-decoration-none" to={"/profile/" + currentUser.userId}>
+									<Link
+										onClick={handleLinkClick}
+										className="text-decoration-none"
+										to={"/profile/" + currentUser.userId}
+									>
 										<div
 											style={{
 												width: "40px",
