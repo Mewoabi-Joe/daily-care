@@ -160,16 +160,18 @@ const MyLabTest = () => {
 					</div>
 				)}
 			</div>
-			<div className="w-100 text-white rounded" style={{ position: "fixed", bottom: 20, backgroundColor: "#aaa" }}>
-				<p className="p-3">
-					To facilitate communication you can chat with one of our agentsAfter booking your first lab tests, send us
-					your home location on whatsapp, inform us aswell of when you the samples would be{" "}
-				</p>
-				<a aria-label="Chat on WhatsApp" href="https://wa.me/+237670240005">
-					{" "}
-					<img alt="Chat on WhatsApp" src={whatsappbtn}></img>
-				</a>
-			</div>
+			{variableTests.length < 2 && (
+				<div className=" text-white rounded" style={{ position: "fixed", bottom: 20, backgroundColor: "#aaa" }}>
+					<p className="p-3">
+						After booking a lab test, you can call, email or message us if you're not clear on the test requirements.
+						You'll send to us your home location, the date and time when your samples would be ready.{" "}
+					</p>
+					<a aria-label="Chat on WhatsApp" href="https://wa.me/+237670240005">
+						{" "}
+						<img alt="Chat on WhatsApp" src={whatsappbtn}></img>
+					</a>
+				</div>
+			)}
 		</div>
 	);
 };
