@@ -1,5 +1,6 @@
 import React from "react";
 import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
+import whatsappbtn from "../assets/icons/WhatsAppButtonGreenMedium.svg";
 import { Link } from "react-router-dom";
 
 const FirstSection = () => {
@@ -20,6 +21,10 @@ const FirstSection = () => {
 						<Link to="/lab_tests" className="btn btn-outline-info btn-lg my-5">
 							Book a lab exam
 						</Link>
+						<a aria-label="Chat on WhatsApp" href="https://wa.me/+237666626414">
+							{" "}
+							<img alt="Chat on WhatsApp" src={whatsappbtn}></img>
+						</a>
 					</div>
 					<img src={firstIllus} alt="first illustration" className="d-none img-fluid d-lg-inline-block w-50" />
 					<img src={firstIllus} alt="first illustration" className="d-inline-block d-lg-none img-fluid w-75" />
