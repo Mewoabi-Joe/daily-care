@@ -4,6 +4,7 @@ import MyLabTestCard from "../components/MyLabTestCard.js";
 import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import axiosInstance from "../utils/axios.js";
 import { myLabTests } from "../utils/testData.js";
+import whatsappbtn from "../assets/icons/WhatsAppButtonGreenMedium.svg";
 
 const MyLabTest = () => {
 	const [loading, setLoading] = useState(false);
@@ -158,6 +159,13 @@ const MyLabTest = () => {
 						))}
 					</div>
 				)}
+			</div>
+			<div className="w-100 text-white rounded" style={{ position: "fixed", bottom: 20, backgroundColor: "#aaa" }}>
+				<p className="p-3">After purchasing your first lab tests, send us your location on whatsapp</p>
+				<a aria-label="Chat on WhatsApp" href="https://wa.me/+237674717559">
+					{" "}
+					<img alt="Chat on WhatsApp" src={whatsappbtn}></img>
+				</a>
 			</div>
 		</div>
 	);
