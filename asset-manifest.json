@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/daily-care/static/css/main.efcbbf97.css",
-    "main.js": "/daily-care/static/js/main.5c2d91ae.js",
+    "main.js": "/daily-care/static/js/main.3e9f506a.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
     "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
@@ -20,10 +20,10 @@
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
     "main.efcbbf97.css.map": "/daily-care/static/css/main.efcbbf97.css.map",
-    "main.5c2d91ae.js.map": "/daily-care/static/js/main.5c2d91ae.js.map"
+    "main.3e9f506a.js.map": "/daily-care/static/js/main.3e9f506a.js.map"
   },
   "entrypoints": [
     "static/css/main.efcbbf97.css",
-    "static/js/main.5c2d91ae.js"
+    "static/js/main.3e9f506a.js"
   ]
 }
