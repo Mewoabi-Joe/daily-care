@@ -2,10 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
 import logo from "../assets/photos/spectrumLabSquareLogo.jpeg";
+import { Collapse } from "bootstrap";
 
 const Navbar = ({ setAuth, currentUser }) => {
 	const handleLinkClick = (e) => {
 		const links = document.querySelectorAll(".nav-link");
+		const menuToggle = document.getElementById("navbarNavAltMarkup");
+		const bsCollapse = new Collapse(menuToggle);
+		bsCollapse.toggle();
 		links.forEach((link) => {
 			link.classList.remove("active");
 		});
@@ -93,7 +97,11 @@ const Navbar = ({ setAuth, currentUser }) => {
 									>
 										Log out
 									</div>
-									<Link className="text-decoration-none" to={"/profile/" + currentUser.userId}>
+									<Link
+										onClick={handleLinkClick}
+										className="text-decoration-none"
+										to={"/profile/" + currentUser.userId}
+									>
 										<div
 											style={{
 												width: "40px",
