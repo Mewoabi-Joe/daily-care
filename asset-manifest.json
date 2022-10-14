@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/daily-care/static/css/main.efcbbf97.css",
-    "main.js": "/daily-care/static/js/main.2df47229.js",
+    "main.js": "/daily-care/static/js/main.b55b0469.js",
     "static/media/ghono.jpg": "/daily-care/static/media/ghono.74f1a0c759bfa9549b1f.jpg",
     "static/media/spectrumLabLogo.jpeg": "/daily-care/static/media/spectrumLabLogo.bc27fe29293c76488629.jpeg",
     "static/media/spectrumLabCroppedLogo.jpeg": "/daily-care/static/media/spectrumLabCroppedLogo.a5ec8409d32696d9a860.jpeg",
@@ -16,14 +16,14 @@
     "static/media/covid.webp": "/daily-care/static/media/covid.adc3ea28bfd55da595ee.webp",
     "static/media/undraw_medical_care_movn.svg": "/daily-care/static/media/undraw_medical_care_movn.7619c2a750cf9d2376082b814dd866d3.svg",
     "static/media/hiv.webp": "/daily-care/static/media/hiv.ab8e4a1dc115113d5bb1.webp",
-    "static/media/WhatsAppButtonGreenMedium.svg": "/daily-care/static/media/WhatsAppButtonGreenMedium.f272da8b2a31717c87ece487fa13a8d0.svg",
+    "static/media/WhatsAppButtonGreenSmall.svg": "/daily-care/static/media/WhatsAppButtonGreenSmall.d40c27795e09df27c997bf320e2a4a8b.svg",
     "static/media/undraw_scientist_0ft9.svg": "/daily-care/static/media/undraw_scientist_0ft9.c6488e6d6bd01e53349424a14e161376.svg",
     "index.html": "/daily-care/index.html",
     "main.efcbbf97.css.map": "/daily-care/static/css/main.efcbbf97.css.map",
-    "main.2df47229.js.map": "/daily-care/static/js/main.2df47229.js.map"
+    "main.b55b0469.js.map": "/daily-care/static/js/main.b55b0469.js.map"
   },
   "entrypoints": [
     "static/css/main.efcbbf97.css",
-    "static/js/main.2df47229.js"
+    "static/js/main.b55b0469.js"
   ]
 }
