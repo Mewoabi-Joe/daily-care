@@ -6,9 +6,10 @@ import axiosInstance, { baseURL } from "../utils/axios"
 import store from "../redux/store"
 import ConfirmBookTest from "../components/ConfirmBookTest"
 import CannotBookModal from "../components/CannotBookModal"
+import Navbar from "../components/Navbar"
 // import ConfirmBookTest from "../components/ConfirmBookTest"
 
-const LabTestDetails = () => {
+const LabTestDetails = ({ currentUser }) => {
   const [loading, setLoading] = useState(false)
 
   const { height, width } = useWindowDimensions()
@@ -47,53 +48,58 @@ const LabTestDetails = () => {
 
   return (
     // If anything disturbs add container class
-    <div className="mt-lg-3">
-      <div className="row justify-content-center">
-        <div className="py-2 pt-3 col-md-8 col-lg-5">
-          <h2 className="text-center d-lg-none ">{state.name}</h2>
-          <img
-            style={{ height: 310, width: 482 }}
-            src={baseURL + state.imagePath}
-            alt="Test Image"
-            className="img-fluid "
-          />
-        </div>
-        <div className="col col-md-8 col-lg-6  p-3 px-4">
-          <h2 className="d-none d-lg-block">{state.name}</h2>
-          <p className="lead pb-1">{state.price} frs CFA</p>
-          <p className="pb-3">{state.description}</p>
-          <div className="d-xl-flex justify-content-between">
-            <button
-              onMouseEnter={() => {
-                setModal("")
-                setCannotBookModal("")
-              }}
-              onClick={() => {
-                setModal(<ConfirmBookTest initiatePayment={initiatePayment} />)
-              }}
-              style={width > 1200 ? { width: "47%" } : { width: "100%" }}
-              className="d-flex justify-content-center mb-2 btn btn-info btn-info d-inline-block"
-            >
-              {!loading ? (
-                <div className="d-flex justify-content-center align-items-center">
-                  <span class="material-symbols-outlined me-2">payments</span>
-                  <span>Book test</span>
-                </div>
-              ) : (
-                <div
-                  class="spinner-border spinner-border-sm text-secondary"
-                  role="status"
-                >
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              )}
-              {modal}
-              {cannotBookModal}
-            </button>
+    <>
+      <Navbar currentUser={currentUser} />
+      <div className="mt-lg-3">
+        <div className="row justify-content-center">
+          <div className="py-2 pt-3 col-md-8 col-lg-5">
+            <h2 className="text-center d-lg-none ">{state.name}</h2>
+            <img
+              style={{ height: 310, width: 482 }}
+              src={baseURL + state.imagePath}
+              alt="Test Image"
+              className="img-fluid "
+            />
+          </div>
+          <div className="col col-md-8 col-lg-6  p-3 px-4">
+            <h2 className="d-none d-lg-block">{state.name}</h2>
+            <p className="lead pb-1">{state.price} frs CFA</p>
+            <p className="pb-3">{state.description}</p>
+            <div className="d-xl-flex justify-content-between">
+              <button
+                onMouseEnter={() => {
+                  setModal("")
+                  setCannotBookModal("")
+                }}
+                onClick={() => {
+                  setModal(
+                    <ConfirmBookTest initiatePayment={initiatePayment} />
+                  )
+                }}
+                style={width > 1200 ? { width: "47%" } : { width: "100%" }}
+                className="d-flex justify-content-center mb-2 btn btn-info btn-info d-inline-block"
+              >
+                {!loading ? (
+                  <div className="d-flex justify-content-center align-items-center">
+                    <span class="material-symbols-outlined me-2">payments</span>
+                    <span>Book test</span>
+                  </div>
+                ) : (
+                  <div
+                    class="spinner-border spinner-border-sm text-secondary"
+                    role="status"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                )}
+                {modal}
+                {cannotBookModal}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

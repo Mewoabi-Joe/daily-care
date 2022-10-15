@@ -36,39 +36,53 @@ function App(props) {
   return (
     <div className="App ">
       <BrowserRouter>
-        <Navbar currentUser={user} />
         <Routes>
-          <Route path="/spectrumlab" element={<Home />} />
+          <Route path="/spectrumlab" element={<Home currentUser={user} />} />
         </Routes>
         <Routes>
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup currentUser={user} />} />
         </Routes>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login currentUser={user} />} />
         </Routes>
         <Routes>
-          <Route path="/lab_tests" element={<LabTests />} />
+          <Route path="/lab_tests" element={<LabTests currentUser={user} />} />
         </Routes>
         <Routes>
-          <Route path="/lab_test_details" element={<LabTestDetails />} />
+          <Route
+            path="/lab_test_details"
+            element={<LabTestDetails currentUser={user} />}
+          />
         </Routes>
         <Routes>
-          <Route path="/add_test" element={<AddTest />} />
+          <Route path="/add_test" element={<AddTest currentUser={user} />} />
         </Routes>
         <Routes>
-          <Route path="/edit_test/:testId" element={<EditTest />} />
+          <Route
+            path="/edit_test/:testId"
+            element={<EditTest currentUser={user} />}
+          />
         </Routes>
         <Routes>
-          <Route path="/my_lab_tests/:userId" element={<MyLabTest />} />
+          <Route
+            path="/my_lab_tests/:userId"
+            element={<MyLabTest currentUser={user} />}
+          />
         </Routes>
         <Routes>
-          <Route path="/profile/:userId" element={<Profile />} />
+          <Route
+            path="/profile/:userId"
+            element={<Profile currentUser={user} />}
+          />
         </Routes>
         <Routes>
-          <Route path="/profileEdit/:userId" element={<ProfileEdit />} />
+          <Route
+            path="/profileEdit/:userId"
+            element={<ProfileEdit currentUser={user} />}
+          />
         </Routes>
         <Routes>
-          <Route path="/users" element={<Users />} />
+          <Route path="/users" element={<Users currentUser={user} />} />
         </Routes>
       </BrowserRouter>
     </div>
