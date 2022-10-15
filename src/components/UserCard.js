@@ -55,7 +55,7 @@ const UserCard = ({ userId, firstName, lastName, email, phoneNo, dateOfBirth, in
 					<div className="card-body p-0 ps-3">
 						<div className="d-flex justify-content-between align-items-center p-0">
 							<h6 className="card-title mb-0">{firstName + " " + lastName}</h6>
-							<UserOptions />
+							{/* <UserOptions /> */}
 						</div>
 						<div className="  ">
 							<small className="text-muted ">Born on</small> <small>{new Date(dateOfBirth).toDateString()}</small>

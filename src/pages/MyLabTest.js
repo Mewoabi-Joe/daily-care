@@ -5,6 +5,7 @@ import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import axiosInstance from "../utils/axios.js";
 import { myLabTests } from "../utils/testData.js";
 import whatsappbtn from "../assets/icons/WhatsAppButtonGreenSmall.svg";
+import { getByTitle } from "@testing-library/react";
 
 const MyLabTest = () => {
 	const [loading, setLoading] = useState(false);
@@ -13,7 +14,7 @@ const MyLabTest = () => {
 	const { userId } = useParams();
 	console.log(userId);
 	const [filters, setFilters] = useState([]);
-
+	const [user, setUser] = useState(null);
 	const [originalTests, setOriginalTests] = useState([]);
 	const [variableTests, setVariableTests] = useState([]);
 	const [filterLoading, setFilterLoading] = useState(false);
@@ -23,6 +24,15 @@ const MyLabTest = () => {
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
+
+	const getUser = async () => {
+		try {
+			const res = await axiosInstance.get("/auth/get-user");
+			setUser(res.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	useEffect(() => {
 		const getMyTest = async () => {
@@ -50,7 +60,7 @@ const MyLabTest = () => {
 		};
 
 		getMyTest();
-
+		getUser();
 		const theFilters = ["booked lab tests", "tested", "results out"];
 		setFilters(theFilters);
 		let localFilterStates = {};
@@ -97,11 +107,15 @@ const MyLabTest = () => {
 		setVariableTests(originalTests);
 	};
 
+	const getTitle = () => {
+		return state ? `${state} lab tests` : "My lab tests";
+	};
+
 	return (
 		<div className="container">
 			{/* for mobile to sm screens */}
 			<div className="pt-3">
-				<h4 className="text-center pt-lg-4">{state}My lab tests</h4>
+				<h4 className="text-center pt-lg-4">{getTitle()}</h4>
 				<div className="d-flex justify-content-evenly m-4 py-lg-3">
 					<div className="input-group" style={{ width: width >= 576 ? "50%" : "75%" }}>
 						<button className="btn btn-outline-info" type="button" id="button-addon2" disabled>
@@ -160,7 +174,7 @@ const MyLabTest = () => {
 					</div>
 				)}
 			</div>
-			{variableTests.length < 2 && (
+			{variableTests.length < 2 && !user?.admin && !loading && !filterLoading && (
 				<div className=" text-white rounded" style={{ position: "fixed", bottom: 20, backgroundColor: "#aaa" }}>
 					<p className="p-3">
 						After booking a lab test, you can call, email or message us if you're not clear on the test requirements.
