@@ -209,15 +209,41 @@ const ProfileEdit = () => {
               <label for="password" class="form-label">
                 Current password:
               </label>
-              <input
-                onChange={handleChange}
-                name="oldPassword"
-                value={user.oldPassword}
-                type="password"
-                class="form-control"
-                id="password"
-                required={true}
-              />
+              <div
+                style={{
+                  position: "relative",
+                }}
+                className="password-container"
+              >
+                <input
+                  onChange={handleChange}
+                  name="oldPassword"
+                  value={user.oldPassword}
+                  type="password"
+                  class="form-control"
+                  id="oldpassword"
+                  required={true}
+                />
+                <i
+                  style={{
+                    position: "absolute",
+                    top: "28%",
+                    right: "4%",
+                  }}
+                  onClick={e => {
+                    e.target.classList.toggle("fa-eye-slash")
+                    const passwordField = document.querySelector("#oldpassword")
+                    const type =
+                      passwordField.getAttribute("type") === "password"
+                        ? "text"
+                        : "password"
+                    passwordField.setAttribute("type", type)
+                  }}
+                  class="fa-solid fa-eye"
+                  id="eye"
+                ></i>
+              </div>
+
               <div class="text-danger password">
                 {error.oldPassword ? error.oldPassword : ""}
               </div>
@@ -228,15 +254,41 @@ const ProfileEdit = () => {
               <label for="password" class="form-label">
                 New password:
               </label>
-              <input
-                onChange={handleChange}
-                name="password"
-                value={user.password}
-                type="password"
-                class="form-control"
-                id="password"
-                required={true}
-              />
+              <div
+                style={{
+                  position: "relative",
+                }}
+                className="password-container"
+              >
+                <input
+                  onChange={handleChange}
+                  name="password"
+                  value={user.password}
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  required={true}
+                />
+                <i
+                  style={{
+                    position: "absolute",
+                    top: "28%",
+                    right: "4%",
+                  }}
+                  onClick={e => {
+                    e.target.classList.toggle("fa-eye-slash")
+                    const passwordField = document.querySelector("#password")
+                    const type =
+                      passwordField.getAttribute("type") === "password"
+                        ? "text"
+                        : "password"
+                    passwordField.setAttribute("type", type)
+                  }}
+                  class="fa-solid fa-eye"
+                  id="eye"
+                ></i>
+              </div>
+
               <div class="text-danger password">
                 {error.password ? error.password : ""}
               </div>
@@ -247,15 +299,41 @@ const ProfileEdit = () => {
               <label for="vPassword" class="form-label">
                 New password again:
               </label>
-              <input
-                onChange={handleChange}
-                name="vPassword"
-                value={user.vPassword}
-                type="password"
-                class="form-control"
-                id="vPassword"
-                required={true}
-              />
+              <div
+                style={{
+                  position: "relative",
+                }}
+                className="password-container"
+              >
+                <input
+                  onChange={handleChange}
+                  name="vPassword"
+                  value={user.vPassword}
+                  type="password"
+                  class="form-control"
+                  id="vPassword"
+                  required={true}
+                />
+                <i
+                  style={{
+                    position: "absolute",
+                    top: "28%",
+                    right: "4%",
+                  }}
+                  onClick={e => {
+                    e.target.classList.toggle("fa-eye-slash")
+                    const passwordField = document.querySelector("#vPassword")
+                    const type =
+                      passwordField.getAttribute("type") === "password"
+                        ? "text"
+                        : "password"
+                    passwordField.setAttribute("type", type)
+                  }}
+                  class="fa-solid fa-eye"
+                  id="eye"
+                ></i>
+              </div>
+
               <div class="text-danger vPassword">
                 {error.vPassword ? error.vPassword : ""}
               </div>
