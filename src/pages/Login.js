@@ -4,9 +4,9 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { setUser } from "../redux/actions/authActions"
 import axiosInstance from "../utils/axios"
-import Navbar from "../components/Navbar"
 import logo from "../assets/photos/spectrumLabLogo.jpeg"
 import useWindowDimensions from "../hooks/WindowsDimensionHook"
+import Navbar from "../components/Navbar"
 
 const Login = props => {
   setTimeout(() => {
@@ -66,7 +66,8 @@ const Login = props => {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar currentUser={props.currentUser} />
+
       <div class="container-lg">
         <h3 class="text-center my-3">Log in to Spectrum Lab</h3>
         <small className="text-center d-block">
@@ -180,7 +181,7 @@ const Login = props => {
 
 const mapStateToProps = ({ auth }) => {
   return {
-    currentUser: auth.user,
+    newUser: auth.user,
   }
 }
 
