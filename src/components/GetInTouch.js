@@ -1,3 +1,4 @@
+import whatsappbtn from "../assets/icons/WhatsAppButtonGreenSmall.svg";
 import React from "react";
 
 const GetInTouch = () => {
@@ -56,6 +57,14 @@ const GetInTouch = () => {
 						></iframe>
 					</div>
 				</div>
+				<p className="mt-4 px-2 px-sm-5 mx-sm-5 px-lg-3 mx-lg-4 px-xl-5 mx-xl-5">
+					For your convenience we provide different ways of reaching us, you can phone us, email us, or if you prefer
+					message us on whatsapp{" "}
+					<a aria-label="Chat on WhatsApp" href="https://wa.me/+237670240005">
+						{" "}
+						<img alt="Chat on WhatsApp" src={whatsappbtn}></img>
+					</a>
+				</p>
 			</div>
 		</section>
 	);
