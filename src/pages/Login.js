@@ -111,15 +111,41 @@ const Login = props => {
               <label for="password" class="form-label">
                 Password:
               </label>
-              <input
-                onChange={handleChange}
-                name="password"
-                type="password"
-                value={user.password}
-                class="form-control"
-                id="password"
-                required
-              />
+              <div
+                style={{
+                  position: "relative",
+                }}
+                className="password-container"
+              >
+                <input
+                  onChange={handleChange}
+                  name="password"
+                  type="password"
+                  value={user.password}
+                  class="form-control"
+                  id="password"
+                  required
+                />
+                <i
+                  style={{
+                    position: "absolute",
+                    top: "28%",
+                    right: "4%",
+                  }}
+                  onClick={e => {
+                    e.target.classList.toggle("fa-eye-slash")
+                    const passwordField = document.querySelector("#password")
+                    const type =
+                      passwordField.getAttribute("type") === "password"
+                        ? "text"
+                        : "password"
+                    passwordField.setAttribute("type", type)
+                  }}
+                  class="fa-solid fa-eye"
+                  id="eye"
+                ></i>
+              </div>
+
               <div class="text-danger password">
                 {error.password ? error.password : ""}
               </div>
