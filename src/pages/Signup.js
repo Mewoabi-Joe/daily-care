@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import useWindowDimensions from "../hooks/WindowsDimensionHook"
 import axiosInstance from "../utils/axios"
 import logo from "../assets/photos/spectrumLabCroppedLogo.jpeg"
@@ -152,36 +152,89 @@ const Signup = () => {
               {error.phoneNo ? error.phoneNo : ""}
             </div>
           </div>
+
           <div class="mb-1">
             <label for="password" class="form-label">
               Password:
             </label>
-            <input
-              onChange={handleChange}
-              name="password"
-              value={user.password}
-              type="password"
-              class="form-control"
-              id="password"
-              required={true}
-            />
+            <div
+              style={{
+                position: "relative",
+              }}
+              className="password-container"
+            >
+              <input
+                onChange={handleChange}
+                name="password"
+                type="password"
+                value={user.password}
+                class="form-control"
+                id="password"
+                required
+              />
+              <i
+                style={{
+                  position: "absolute",
+                  top: "28%",
+                  right: "4%",
+                }}
+                onClick={e => {
+                  e.target.classList.toggle("fa-eye-slash")
+                  const passwordField = document.querySelector("#password")
+                  const type =
+                    passwordField.getAttribute("type") === "password"
+                      ? "text"
+                      : "password"
+                  passwordField.setAttribute("type", type)
+                }}
+                class="fa-solid fa-eye"
+                id="eye"
+              ></i>
+            </div>
             <div class="text-danger password">
               {error.password ? error.password : ""}
             </div>
           </div>
+
           <div class="mb-1">
             <label for="vPassword" class="form-label">
               Enter password again:
             </label>
-            <input
-              onChange={handleChange}
-              name="vPassword"
-              value={user.vPassword}
-              type="password"
-              class="form-control"
-              id="vPassword"
-              required={true}
-            />
+
+            <div
+              style={{
+                position: "relative",
+              }}
+              className="password-container"
+            >
+              <input
+                onChange={handleChange}
+                name="vPassword"
+                value={user.vPassword}
+                type="password"
+                class="form-control"
+                id="vPassword"
+                required={true}
+              />
+              <i
+                style={{
+                  position: "absolute",
+                  top: "28%",
+                  right: "4%",
+                }}
+                onClick={e => {
+                  e.target.classList.toggle("fa-eye-slash")
+                  const passwordField = document.querySelector("#vPassword")
+                  const type =
+                    passwordField.getAttribute("type") === "password"
+                      ? "text"
+                      : "password"
+                  passwordField.setAttribute("type", type)
+                }}
+                class="fa-solid fa-eye"
+                id="eye"
+              ></i>
+            </div>
             <div class="text-danger vPassword">
               {error.vPassword ? error.vPassword : ""}
             </div>

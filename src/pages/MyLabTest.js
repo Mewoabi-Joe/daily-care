@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import MyLabTestCard from "../components/MyLabTestCard.js";
@@ -5,10 +6,9 @@ import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import axiosInstance from "../utils/axios.js";
 import { myLabTests } from "../utils/testData.js";
 import whatsappbtn from "../assets/icons/WhatsAppButtonGreenSmall.svg";
-import { getByTitle } from "@testing-library/react";
 
 const MyLabTest = () => {
-	const [loading, setLoading] = useState(false);
+ const [loading, setLoading] = useState(false);
 	const { state } = useLocation();
 	const { height, width } = useWindowDimensions();
 	const { userId } = useParams();
@@ -190,4 +190,4 @@ const MyLabTest = () => {
 	);
 };
 
-export default MyLabTest;
+export default MyLabTest
