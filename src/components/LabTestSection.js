@@ -29,11 +29,11 @@ const LabTestSection = () => {
 	return tests.length ? (
 		<section id="labTests" className="py-5 text-light text-center" style={{ backgroundColor: "#055160" }}>
 			<div className="container my-lg-5 py-lg-5">
-				<h2 className="display-5  fw-bolder mb-lg-5 pb-3 pb-lg-5" style={{ color: "#0AA2C0" }}>
+				<h2 className="display-5  fw-bolder pb-3 pb-lg-5" style={{ color: "#0AA2C0" }}>
 					Lab Tests
 				</h2>
 				<div>
-					<div className=" my-4 mb-5">
+					<div className="my-3 mb-5">
 						We have a wide range of lab test, pick those you want to book appointments for
 					</div>
 					<Link

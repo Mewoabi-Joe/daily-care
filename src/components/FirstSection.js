@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const FirstSection = () => {
 	return (
 		<section id="sectionOne" className="py-5 text-dark" style={{ backgroundColor: "#ccc" }}>
-			<div className="container my-lg-5 pt-0 pb-lg-5">
+			<div className="container mb-lg-5 pt-0 pb-lg-5">
 				<h1 className="title display-5 fw-bolder  text-center mb-5">
 					<span style={{ color: "#055160" }}>SPECTRUM</span>{" "}
 					<span className="ms-4" style={{ color: "#6E943D" }}>

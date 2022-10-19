@@ -5,11 +5,11 @@ const GetInTouch = () => {
 	return (
 		<section id="getInTouch" className="py-5" style={{ backgroundColor: "#ccc" }}>
 			<div className="container my-lg-5 py-lg-5">
-				<h2 className="display-5 text-center text-dark fw-bolder mb-lg-5 pb-3 pb-lg-5 ">Get in touch</h2>
+				<h2 className="display-5 text-center text-dark fw-bolder  pb-3 pb-lg-5 ">Get in touch</h2>
 				{/* physical examination */}
 				<div className="row justify-content-between">
 					<div className="col-lg-6">
-						<p className="display-6 text-lg-center mb-3 mb-lg-5" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 text-lg-center mb-3" style={{ color: "#0AA2C0" }}>
 							Locate Us
 						</p>
 						<div className="text-center">
@@ -38,7 +38,7 @@ const GetInTouch = () => {
 						</div>
 					</div>
 					<div className="col-lg-6">
-						<p className="display-6 text-lg-center my-3 my-lg-5 mt-5 mt-lg-0" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 text-lg-center my-3  mt-5 mt-lg-0" style={{ color: "#0AA2C0" }}>
 							Message Us
 						</p>
 						<form>
