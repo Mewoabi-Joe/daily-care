@@ -1,7 +1,6 @@
-
 import React from "react";
 import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
-import photo from "../assets/photos/new.webp"
+import photo from "../assets/photos/new.webp";
 import { Link } from "react-router-dom";
 
 const FirstSection = () => {
@@ -15,8 +14,8 @@ const FirstSection = () => {
 					</span>
 				</h1>
 				<div className="d-lg-flex justify-content-between align-items-center text-center py-0 py-lg-5">
-					<div className="text-center text-lg-start h4">
-						<p>
+					<div className="text-center text-lg-start h4 me-3">
+						{/* <p>
 							We carry out tests{" "}
 							<span className=" fw-bolder" style={{ color: "#0AA2C0" }}>
 								24
@@ -26,6 +25,13 @@ const FirstSection = () => {
 								365
 							</span>{" "}
 							days a year.
+						</p> */}
+						<p>
+							Your{" "}
+							<span className=" fw-bolder" style={{ color: "#0AA2C0" }}>
+								health
+							</span>{" "}
+							is our top priority so
 						</p>
 						<p className="">
 							Ensuring you get accurate results as fast possible is our priority at{" "}
@@ -42,15 +48,15 @@ const FirstSection = () => {
 							Book a lab exam
 						</Link>
 					</div>
-          <img
-            style={{ border: "none" }}
-            src={photo}
-            alt="first illustration"
-            className="d-none img-fluid d-lg-inline-block w-50"
-          />
+					<img
+						style={{ border: "none" }}
+						src={photo}
+						alt="first illustration"
+						className="d-none img-fluid d-lg-inline-block w-50 rounded-4"
+					/>
 				</div>
 			</div>
 		</section>
 	);
 };
-export default FirstSection
+export default FirstSection;
