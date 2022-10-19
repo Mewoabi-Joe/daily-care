@@ -9,19 +9,19 @@ const ServicesSection = () => {
 	// Things have been douplicated for handle responsiveness so if text has to be modified don't forget to modify twice
 	return (
 		<section id="services" className="py-5" style={{ backgroundColor: "#ccc" }}>
-			<div className="container">
-				<h2 className="display-5 text-center text-dark fw-bolder mb-5">Our Services</h2>
+			<div className="container my-lg-5 py-lg-5">
+				<h2 className="display-5 text-center text-dark fw-bolder er mb-lg-5 pb-3 pb-lg-5">Our Services</h2>
 				{/* physical examination */}
 				<div className="d-lg-flex justify-content-between align-items-center text-center">
 					{/* This Diagnosis should show above the image from lg and below */}
-					<p className="display-6 fw-bold my-4 pb-md-3 d-lg-none" style={{ color: "#0AA2C0" }}>
+					<p className="display-6   my-4 pb-md-3 d-lg-none" style={{ color: "#0AA2C0" }}>
 						Physical examination
 					</p>
 
 					<img src={diagnosis} alt="diagnosis" className="d-none img-fluid d-lg-inline-block w-50" />
 					<img src={diagnosis} alt="diagnosis" className="d-inline-block mb-4 d-lg-none img-fluid w-75" />
 					<div className="text-center text-lg-start ps-lg-5  ">
-						<p className="display-6 d-none d-lg-block fw-bold my-3" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 d-none d-lg-block   my-3" style={{ color: "#0AA2C0" }}>
 							Physical examination
 						</p>
 						<p className="">
@@ -33,7 +33,7 @@ const ServicesSection = () => {
 				{/* Lab test */}
 				<div className="d-lg-flex justify-content-between align-items-center text-center pt-5">
 					<div className="text-center text-lg-start  ">
-						<p className="display-6 pb-md-3 pb-lg-0 fw-bold my-3" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 pb-md-3 pb-lg-0   my-3" style={{ color: "#0AA2C0" }}>
 							Laboratory testing
 						</p>
 						<p className="d-none d-lg-block  ">
@@ -51,14 +51,14 @@ const ServicesSection = () => {
 				{/* prevention */}
 				<div className="d-lg-flex justify-content-between align-items-center text-center pt-5">
 					{/* This Diagnosis should show above the image from lg and below */}
-					<p className="display-6 fw-bold my-4 pb-md-3 d-lg-none" style={{ color: "#0AA2C0" }}>
+					<p className="display-6   my-4 pb-md-3 d-lg-none" style={{ color: "#0AA2C0" }}>
 						Pharmaceutical care
 					</p>
 
 					<img src={treatment} alt="treatment" className="d-none img-fluid d-lg-inline-block w-50" />
 					<img src={treatment} alt="treatment" className="d-inline-block mb-4 d-lg-none img-fluid w-75" />
 					<div className="text-center text-lg-start ps-lg-5  ">
-						<p className="display-6 d-none d-lg-block  fw-bold my-3" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 d-none d-lg-block    my-3" style={{ color: "#0AA2C0" }}>
 							Pharmaceutical care
 						</p>
 						<p className="">
@@ -70,7 +70,7 @@ const ServicesSection = () => {
 				{/* follow-up
 				<div className="d-lg-flex justify-content-between align-items-center text-center pt-5">
 					<div className="text-center text-lg-start  ">
-						<p className="display-6 pb-md-3 pb-lg-0 fw-bold my-3" style={{ color: "#0AA2C0" }}>
+						<p className="display-6 pb-md-3 pb-lg-0   my-3" style={{ color: "#0AA2C0" }}>
 							Follow-up
 						</p>
 						<p className="d-none d-lg-block  ">We stay in touch with you till you are completely healed</p>
