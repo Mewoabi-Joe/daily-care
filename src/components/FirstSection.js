@@ -1,5 +1,4 @@
 import React from "react"
-import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg"
 import photo from "../assets/photos/new.webp"
 import { Link } from "react-router-dom"
 
