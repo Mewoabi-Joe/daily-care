@@ -14,7 +14,7 @@ const FirstSection = () => {
 					</span>
 				</h1>
 				<div className="d-lg-flex justify-content-between align-items-center text-center py-0 py-lg-5">
-					<div className="text-center text-lg-start h4 me-3">
+					<div className="text-center text-lg-start h4 me-lg-3">
 						{/* <p>
 							We carry out tests{" "}
 							<span className=" fw-bolder" style={{ color: "#0AA2C0" }}>
