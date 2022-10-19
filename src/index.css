@@ -7,10 +7,20 @@
 body {
 	font-family: "Poppins", sans-serif !important;
 }
+
+.title {
+	letter-spacing: 4px;
+}
+
 p {
 	margin: 0px !important;
 	padding: 0px !important;
 }
+
+.call-to-action:hover {
+	background-color: #0dcaf0 !important;
+}
+
 .card-style:hover {
 	cursor: pointer;
 	opacity: 0.95;
