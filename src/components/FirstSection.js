@@ -1,6 +1,7 @@
+
 import React from "react";
 import firstIllus from "../assets/illustrations/undraw_medicine_b-1-ol.svg";
-
+import photo from "../assets/photos/new.webp"
 import { Link } from "react-router-dom";
 
 const FirstSection = () => {
@@ -41,12 +42,15 @@ const FirstSection = () => {
 							Book a lab exam
 						</Link>
 					</div>
-					<img src={firstIllus} alt="first illustration" className="d-none img-fluid d-lg-inline-block w-50" />
-					<img src={firstIllus} alt="first illustration" className="d-inline-block d-lg-none img-fluid w-75" />
+          <img
+            style={{ border: "none" }}
+            src={photo}
+            alt="first illustration"
+            className="d-none img-fluid d-lg-inline-block w-50"
+          />
 				</div>
 			</div>
 		</section>
 	);
 };
-
-export default FirstSection;
+export default FirstSection

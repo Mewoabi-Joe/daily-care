@@ -12,7 +12,7 @@ const MobileScreenCard = ({
 }) => {
   console.log(baseURL + image)
   return (
-    <div className="card mb-3 w-100 border-0">
+    <div style={{ height: "fit-content" }} className="card mb-3 w-100 border-0">
       <div className="row g-0">
         <div className="col-4">
           <img
@@ -27,6 +27,7 @@ const MobileScreenCard = ({
             <div className="d-flex align-items-center justify-content-between">
               <h6 className="card-title mb-0">{name}</h6>
               <MoreOptions
+                price={price}
                 testId={id}
                 handleViewDetails={handleViewDetails}
                 handleEditTest={handleEditTest}
