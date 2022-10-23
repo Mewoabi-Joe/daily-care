@@ -10,7 +10,7 @@ import ServicesSection from "../components/ServicesSection";
 const Home = ({ currentUser }) => {
 	return (
 		<main>
-			<Navbar currentUser={currentUser} />
+			<Navbar currentUser={currentUser} page={"home"} />
 			<FirstSection />
 			<About />
 			<ServicesSection />
