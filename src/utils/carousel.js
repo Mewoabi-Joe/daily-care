@@ -63,7 +63,7 @@ export const generateCarouselItemsForLargeScreens = (tests) => {
 	for (let i = 0; i < tests.length; i += 3) {
 		if (i === 0)
 			carouselTests.push(
-				<div className="carousel-item active  " data-bs-interval="4000" key={i}>
+				<div className="carousel-item active" data-bs-interval="4000" key={i}>
 					<div className="d-flex justify-content-evenly">
 						<LabTestCard name={tests[i].name} image={`${baseURL}${tests[i].imagePath}`} price={tests[i].price} />
 						{i + 1 < tests.length && (

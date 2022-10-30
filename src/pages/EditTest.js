@@ -10,6 +10,7 @@ const EditTest = ({ currentUser }) => {
 	const { testId } = useParams();
 	console.log(testId);
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 	const [tagStates, setTagStates] = useState({});
 	const [tags, setTags] = useState([]);
 	// const { height, width } = useWindowDimensions();
@@ -28,6 +29,7 @@ const EditTest = ({ currentUser }) => {
 	});
 
 	const editTest = async (e) => {
+		setLoading(true);
 		e.preventDefault();
 		const data = new FormData();
 		data.append("name", test.name);
@@ -209,7 +211,7 @@ const EditTest = ({ currentUser }) => {
 							class="form-control mb-3"
 							id="exampleFormControlTextarea1 "
 							value={test.description}
-							rows="3"
+							rows="7"
 						></textarea>
 						<div className="dropdown-center w-100 mb-3">
 							<button
@@ -248,8 +250,16 @@ const EditTest = ({ currentUser }) => {
 							onClick={editTest}
 							className="d-flex justify-content-center align-items-center btn btn-info btn-lg  w-100"
 						>
-							<span class="material-symbols-outlined me-2">task_alt</span>
-							Save
+							{!loading ? (
+								<>
+									<span class="material-symbols-outlined me-2">task_alt</span>
+									<span>Save</span>
+								</>
+							) : (
+								<div class="spinner-border spinner-border-sm text-secondary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							)}
 						</button>
 					</div>
 				</div>
