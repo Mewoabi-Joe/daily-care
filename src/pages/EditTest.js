@@ -15,6 +15,7 @@ const EditTest = ({ currentUser }) => {
 	const [tags, setTags] = useState([]);
 	// const { height, width } = useWindowDimensions();
 	const [checkedTags, setCheckedTags] = useState([]);
+	const [errors, setErrors] = useState([]);
 
 	const [, updateState] = React.useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -30,6 +31,7 @@ const EditTest = ({ currentUser }) => {
 
 	const editTest = async (e) => {
 		setLoading(true);
+		setErrors([]);
 		e.preventDefault();
 		const data = new FormData();
 		data.append("name", test.name);
@@ -43,7 +45,14 @@ const EditTest = ({ currentUser }) => {
 			navigate("/lab_test_details", { state: res.data.test });
 			console.log(res);
 		} catch (error) {
-			console.log(error.response);
+			console.log("error", error);
+			console.log("error.response.data", error.response.data);
+			const axiosErrors = error.response.data;
+			const localErrors = [];
+			axiosErrors.forEach((error) => localErrors.push(` - ${error.name || error.image || error.price}`));
+			console.log("localErrors", localErrors);
+			setErrors(localErrors);
+			setLoading(false);
 		}
 	};
 
@@ -117,7 +126,13 @@ const EditTest = ({ currentUser }) => {
 	return (
 		<div>
 			<Navbar currentUser={currentUser} page={"edit_test"} />
-
+			{errors.length ? (
+				<div class="alert alert-danger position-sticky" style={{ top: 70 }} role="alert">
+					{errors.map((error) => (
+						<div>{error}</div>
+					))}
+				</div>
+			) : null}
 			<h2 className="text-center mt-3">Edit lab test</h2>
 			<div className="mt-lg-3">
 				<div className="row justify-content-center">

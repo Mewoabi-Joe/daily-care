@@ -16,6 +16,7 @@ const AddTest = ({ currentUser }) => {
 
 	const [, updateState] = React.useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
+	const [errors, setErrors] = useState([]);
 
 	const [test, setTest] = useState({
 		name: "",
@@ -28,6 +29,7 @@ const AddTest = ({ currentUser }) => {
 
 	const createTest = async (e) => {
 		setLoading(true);
+		setErrors([]);
 		e.preventDefault();
 		const data = new FormData();
 		data.append("name", test.name);
@@ -46,7 +48,14 @@ const AddTest = ({ currentUser }) => {
 			setLoading(false);
 			navigate("/lab_tests");
 		} catch (error) {
-			console.log(error);
+			console.log("error", error);
+			console.log("error.response.data", error.response.data);
+			const axiosErrors = error.response.data;
+			const localErrors = [];
+			axiosErrors.forEach((error) => localErrors.push(` - ${error.name || error.image || error.price}`));
+			console.log("localErrors", localErrors);
+			setErrors(localErrors);
+			setLoading(false);
 		}
 	};
 
@@ -105,7 +114,13 @@ const AddTest = ({ currentUser }) => {
 	return (
 		<div>
 			<Navbar currentUser={currentUser} page={"add_test"} />
-
+			{errors.length ? (
+				<div class="alert alert-danger position-sticky" style={{ top: 70 }} role="alert">
+					{errors.map((error) => (
+						<div>{error}</div>
+					))}
+				</div>
+			) : null}
 			<h2 className="text-center mt-3">Create a lab test</h2>
 			<div className="mt-lg-3">
 				<div className="row justify-content-center">
