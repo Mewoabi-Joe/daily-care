@@ -19,6 +19,7 @@ export default function DeleteTestModal({ testId }) {
 			const res = await axiosInstance.delete(`/test/delete/${testId}`);
 
 			window.location.href = "/lab_tests";
+			setShow(false);
 		} catch (error) {
 			console.log(error.response);
 		}
