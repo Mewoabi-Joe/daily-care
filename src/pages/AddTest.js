@@ -195,7 +195,7 @@ const AddTest = ({ currentUser }) => {
 							placeholder="Enter description"
 							class="form-control mb-3"
 							id="exampleFormControlTextarea1 "
-							rows="3"
+							rows="6"
 						></textarea>
 						<div className="dropdown-center w-100 mb-3">
 							<button
