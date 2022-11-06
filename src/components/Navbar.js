@@ -56,14 +56,17 @@ const Navbar = ({ currentUser, page }) => {
               {/* <a className="nav-link" href="#services">
 								Our services
 							</a> */}
-              <Link
-                onClick={handleLinkClick}
-                className={`nav-link ${page == "lab_tests" && "active"}`}
-                to="/lab_tests"
-              >
-                Lab tests
-              </Link>
-              {/* <a className="nav-link" href="#getInTouch">
+							<Link onClick={handleLinkClick} className={`nav-link ${page == "lab_tests" && "active"}`} to="/lab_tests">
+								Lab tests
+							</Link>
+							<Link
+								onClick={handleLinkClick}
+								className={`nav-link ${page == "education_news" && "active"}`}
+								to="/education_news"
+							>
+								Education & news
+							</Link>
+							{/* <a className="nav-link" href="#getInTouch">
 								Get in touch
 							</a> */}
               {currentUser.admin ? (

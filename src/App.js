@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AddTest from "./pages/AddTest"
@@ -19,6 +20,9 @@ import ProfileEdit from "./pages/ProfileEdit"
 import Inbox from "./pages/Inbox"
 import MessageDetails from "./pages/MessageDetails"
 import CreatePost from "./pages/createPost"
+import EducationAndNews from "./pages/EducationAndNews";
+import PostDetails from "./pages/PostDetails";
+
 function App(props) {
   const [user, setUser] = useState({})
 
@@ -101,9 +105,16 @@ function App(props) {
             element={<CreatePost currentUser={user} />}
           />
         </Routes>
+        <Routes>
+					<Route path="/education_news" element={<EducationAndNews currentUser={user} />} />
+				</Routes>
+        <Routes>
+					<Route path="/post_details" element={<PostDetails currentUser={user} />} />
+				</Routes>
       </BrowserRouter>
     </div>
   )
+  
 }
 
 const mapStateToProps = ({ auth }) => {
