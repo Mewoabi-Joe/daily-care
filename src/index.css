@@ -135,3 +135,14 @@ p {
 	cursor: pointer;
 	opacity: 0.8;
 }
+
+.postCard {
+	background-image: linear-gradient(to right, #ddd, white);
+}
+.postCard :hover {
+	cursor: pointer;
+}
+
+.my-overlay {
+	z-index: 100;
+}
