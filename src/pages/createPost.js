@@ -6,7 +6,7 @@ import axiosInstance from "../utils/axios"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 
-const AddTest = ({ currentUser }) => {
+const CreatePost = ({ currentUser }) => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const [tagStates, setTagStates] = useState({})
@@ -18,25 +18,26 @@ const AddTest = ({ currentUser }) => {
   const forceUpdate = React.useCallback(() => updateState({}), [])
   const [errors, setErrors] = useState([])
 
-  const [test, setTest] = useState({
-    name: "",
+  const [post, setPost] = useState({
+    title: "",
     imagePath: "",
     image: "",
-    price: "",
+    category: "",
     description: "",
+    youtubeVideoUrl: "",
     tags: "",
   })
 
-  const createTest = async e => {
+  const createPost = async e => {
     setLoading(true)
     setErrors([])
     e.preventDefault()
     const data = new FormData()
-    data.append("name", test.name)
-    data.append("description", test.description)
+    data.append("title", post.title)
+    data.append("description", post.description)
     data.append("tags", JSON.stringify(checkedTags))
-    data.append("image", test.image)
-    data.append("price", test.price)
+    data.append("image", post.image)
+    data.append("youtubeVideoUrl", post.youtubeVideoUrl)
 
     const string = JSON.stringify(checkedTags)
     console.log(string)
@@ -44,17 +45,19 @@ const AddTest = ({ currentUser }) => {
 
     try {
       console.log(data)
-      const res = await axiosInstance.post("/test", data)
+      const res = await axiosInstance.post("/posts", data)
       console.log(res)
       setLoading(false)
-      navigate("/lab_tests")
+      navigate("/lab_posts")
     } catch (error) {
       console.log("error", error)
       console.log("error.response.data", error.response.data)
       const axiosErrors = error.response.data
       const localErrors = []
       axiosErrors.forEach(error =>
-        localErrors.push(` - ${error.name || error.image || error.price}`)
+        localErrors.push(
+          ` - ${error.title || error.description || error.image}`
+        )
       )
       console.log("localErrors", localErrors)
       setErrors(localErrors)
@@ -62,7 +65,7 @@ const AddTest = ({ currentUser }) => {
     }
   }
 
-  // const initialTest = {
+  // const initialpost = {
   //   name: "Complete Blood Count(CBC)",
   //   description:
   //     "A blood test used to evaluate your overall health and detect a wide range of disorders, including anemia, infection and leukemia. A complete blood count test measures several components and features of your blood, including: Red blood cells, which carry oxygen",
@@ -87,7 +90,7 @@ const AddTest = ({ currentUser }) => {
     const originalTestsWithCapitalisedTags = capitalizeFirstLetterOfTagsInTest()
     let labTestTags = []
     originalTestsWithCapitalisedTags.forEach(test =>
-      labTestTags.push(...test.tags)
+      labTestTags.push(...test.type)
     )
     const setOflabTestTags = new Set(labTestTags)
     const theTags = Array.from(setOflabTestTags)
@@ -120,7 +123,7 @@ const AddTest = ({ currentUser }) => {
 
   return (
     <div>
-      <Navbar currentUser={currentUser} page={"add_test"} />
+      <Navbar currentUser={currentUser} page={"create_post"} />
       {errors.length ? (
         <div
           class="alert alert-danger position-sticky"
@@ -132,36 +135,36 @@ const AddTest = ({ currentUser }) => {
           ))}
         </div>
       ) : null}
-      <h2 className="text-center mt-3">Create a lab test</h2>
+      <h2 className="text-center mt-3">Create a Post</h2>
       <div className="mt-lg-3">
         <div className="row justify-content-center">
           <div className="py-2 px-4 pt-3 col-md-8 col-lg-5">
             <input
               onChange={e =>
-                setTest(test => {
-                  return { ...test, name: e.target.value }
+                setPost(post => {
+                  return { ...post, title: e.target.value }
                 })
               }
               className="text-center d-lg-none h2 form-control form-control-lg d-block mb-3"
               type="text"
-              placeholder="Enter lab test name"
+              placeholder="Enter Title"
             />
             <label
               style={{ height: 310 }}
               className="d-flex justify-content-center align-items-center d-block w-100 border  rounded-3"
               for="upload-photo"
             >
-              {test.imagePath === "" ? (
+              {post.imagePath === "" ? (
                 <>
                   <span class="d-flex material-symbols-outlined me-2 ">
                     add
                   </span>
-                  Test image
+                  Post image
                 </>
               ) : (
                 <img
                   style={{ height: 310, width: 482 }}
-                  src={test.imagePath}
+                  src={post.imagePath}
                   alt=""
                 />
               )}
@@ -169,15 +172,15 @@ const AddTest = ({ currentUser }) => {
             <input
               onChange={e => {
                 const [file] = e.target.files
-                setTest(test => {
-                  return { ...test, image: file }
+                setPost(post => {
+                  return { ...post, image: file }
                 })
                 let reader = new FileReader()
 
                 reader.onload = function (ev) {
                   console.log(ev.target.result)
-                  setTest(test => {
-                    return { ...test, imagePath: ev.target.result }
+                  setPost(post => {
+                    return { ...post, imagePath: ev.target.result }
                   })
                 }
                 reader.readAsDataURL(file)
@@ -192,36 +195,38 @@ const AddTest = ({ currentUser }) => {
           <div className="col col-md-8 col-lg-6  py-3 px-4">
             <input
               onChange={e =>
-                setTest(test => {
-                  return { ...test, name: e.target.value }
+                setPost(post => {
+                  return { ...post, title: e.target.value }
                 })
               }
               className="d-none mb-3 d-lg-block text-center h2 form-control form-control-lg d-block "
               type="text"
-              placeholder="Enter lab test name"
+              placeholder="Enter Title"
             />
 
-            <div class="input-group pb-3">
-              <input
-                onChange={e =>
-                  setTest(test => {
-                    return { ...test, price: e.target.value }
-                  })
-                }
-                type="number"
-                class="form-control lead"
-                placeholder="Enter cost"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-              />
-              <span class="input-group-text lead" id="basic-addon2">
-                frs CFA
-              </span>
-            </div>
+            {post.image === "" && (
+              <div class="input-group pb-3">
+                <input
+                  onChange={e =>
+                    setPost(post => {
+                      return { ...post, youtubeVideoUrl: e.target.value }
+                    })
+                  }
+                  type="text"
+                  class="form-control lead"
+                  placeholder="Enter Link to Youtube Video"
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                />
+                {/* <span class="input-group-text lead" id="basic-addon2">
+			frs CFA
+			</span> */}
+              </div>
+            )}
             <textarea
               onChange={e =>
-                setTest(test => {
-                  return { ...test, description: e.target.value }
+                setPost(post => {
+                  return { ...post, description: e.target.value }
                 })
               }
               placeholder="Enter description"
@@ -237,7 +242,7 @@ const AddTest = ({ currentUser }) => {
                 aria-expanded="false"
                 // data-bs-offset="10,20"
               >
-                Select tags which describe the lab test
+                Select Category
               </button>
               <ul className="dropdown-menu">
                 {tags.map((tag, index) => (
@@ -263,7 +268,7 @@ const AddTest = ({ currentUser }) => {
             </div>
 
             <button
-              onClick={createTest}
+              onClick={createPost}
               className=" btn btn-info btn-lg  w-100"
             >
               {!loading ? (
@@ -287,4 +292,4 @@ const AddTest = ({ currentUser }) => {
   )
 }
 
-export default AddTest
+export default CreatePost
