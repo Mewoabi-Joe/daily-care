@@ -69,7 +69,7 @@ const LabTestSection = () => {
 					</button>
 				</div>
 				{/* Carousel for lg and above screens */}
-				<div id="carouselLarge" className="carousel slide  d-none d-lg-block" data-bs-ride="carousel">
+				<div id="carouselLarge" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
 					<div className="carousel-inner">{generateCarouselItemsForLargeScreens(tests)}</div>
 					<button className="carousel-control-prev" type="button" data-bs-target="#carouselLarge" data-bs-slide="prev">
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>

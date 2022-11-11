@@ -7,14 +7,19 @@ import { useNavigate } from "react-router-dom";
 export default function DeleteTestModal({ testId }) {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(true);
+	const [loading, setLoading] = useState(false);
+
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	const deleteTest = async () => {
 		try {
-			setShow(false);
+			setLoading(true);
+
 			const res = await axiosInstance.delete(`/test/delete/${testId}`);
+
 			window.location.href = "/lab_tests";
+			setShow(false);
 		} catch (error) {
 			console.log(error.response);
 		}
@@ -31,7 +36,13 @@ export default function DeleteTestModal({ testId }) {
 						cancel
 					</Button>
 					<Button variant="danger" onClick={deleteTest}>
-						Delete
+						{!loading ? (
+							<span>Delete</span>
+						) : (
+							<div class="spinner-border spinner-border-sm text-danger" role="status">
+								<span class="visually-hidden">Loading...</span>
+							</div>
+						)}
 					</Button>
 				</Modal.Footer>
 			</Modal>

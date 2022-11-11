@@ -18,6 +18,10 @@ import Profile from "./pages/Profile";
 import ProfileEdit from "./pages/ProfileEdit";
 import Inbox from "./pages/Inbox";
 import MessageDetails from "./pages/MessageDetails";
+import CreatePost from "./pages/createPost";
+import EducationAndNews from "./pages/EducationAndNews";
+import PostDetails from "./pages/PostDetails";
+
 function App(props) {
 	const [user, setUser] = useState({});
 
@@ -75,6 +79,15 @@ function App(props) {
 				</Routes>
 				<Routes>
 					<Route path="/message_details" element={<MessageDetails currentUser={user} />} />
+				</Routes>
+				<Routes>
+					<Route path="/create_post" element={<CreatePost currentUser={user} />} />
+				</Routes>
+				<Routes>
+					<Route path="/education_news" element={<EducationAndNews currentUser={user} />} />
+				</Routes>
+				<Routes>
+					<Route path="/post_details" element={<PostDetails currentUser={user} />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

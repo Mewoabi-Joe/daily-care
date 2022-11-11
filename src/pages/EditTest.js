@@ -10,10 +10,12 @@ const EditTest = ({ currentUser }) => {
 	const { testId } = useParams();
 	console.log(testId);
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 	const [tagStates, setTagStates] = useState({});
 	const [tags, setTags] = useState([]);
 	// const { height, width } = useWindowDimensions();
 	const [checkedTags, setCheckedTags] = useState([]);
+	const [errors, setErrors] = useState([]);
 
 	const [, updateState] = React.useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -28,6 +30,8 @@ const EditTest = ({ currentUser }) => {
 	});
 
 	const editTest = async (e) => {
+		setLoading(true);
+		setErrors([]);
 		e.preventDefault();
 		const data = new FormData();
 		data.append("name", test.name);
@@ -41,7 +45,14 @@ const EditTest = ({ currentUser }) => {
 			navigate("/lab_test_details", { state: res.data.test });
 			console.log(res);
 		} catch (error) {
-			console.log(error.response);
+			console.log("error", error);
+			console.log("error.response.data", error.response.data);
+			const axiosErrors = error.response.data;
+			const localErrors = [];
+			axiosErrors.forEach((error) => localErrors.push(` - ${error.name || error.image || error.price}`));
+			console.log("localErrors", localErrors);
+			setErrors(localErrors);
+			setLoading(false);
 		}
 	};
 
@@ -115,7 +126,13 @@ const EditTest = ({ currentUser }) => {
 	return (
 		<div>
 			<Navbar currentUser={currentUser} page={"edit_test"} />
-
+			{errors.length ? (
+				<div class="alert alert-danger position-sticky" style={{ top: 70 }} role="alert">
+					{errors.map((error) => (
+						<div>{error}</div>
+					))}
+				</div>
+			) : null}
 			<h2 className="text-center mt-3">Edit lab test</h2>
 			<div className="mt-lg-3">
 				<div className="row justify-content-center">
@@ -209,7 +226,7 @@ const EditTest = ({ currentUser }) => {
 							class="form-control mb-3"
 							id="exampleFormControlTextarea1 "
 							value={test.description}
-							rows="3"
+							rows="7"
 						></textarea>
 						<div className="dropdown-center w-100 mb-3">
 							<button
@@ -248,8 +265,16 @@ const EditTest = ({ currentUser }) => {
 							onClick={editTest}
 							className="d-flex justify-content-center align-items-center btn btn-info btn-lg  w-100"
 						>
-							<span class="material-symbols-outlined me-2">task_alt</span>
-							Save
+							{!loading ? (
+								<>
+									<span class="material-symbols-outlined me-2">task_alt</span>
+									<span>Save</span>
+								</>
+							) : (
+								<div class="spinner-border spinner-border-sm text-secondary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							)}
 						</button>
 					</div>
 				</div>
