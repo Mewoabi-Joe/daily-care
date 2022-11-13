@@ -8,7 +8,13 @@ const MobileScreenCard = ({ id, image, name, price, handleViewDetails, handleEdi
 		<div style={{ height: "fit-content" }} className="card mb-3 w-100 border-0">
 			<div className="row g-0">
 				<div className="col-4">
-					<img onClick={handleViewDetails} src={baseURL + image} className="img-fluid" alt={name}></img>
+					<img
+						onClick={handleViewDetails}
+						src={baseURL + image}
+						style={{ maxHeight: 300 }}
+						className="img-fluid"
+						alt={name}
+					></img>
 				</div>
 				<div className="col-8">
 					<div className="card-body p-0 ps-3">

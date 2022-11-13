@@ -144,7 +144,7 @@ const Login = (props) => {
 						{/* <div class="mb-3">
 							<Link to="/verify_email">forgotten password?</Link>
 						</div> */}
-						<div class="text-center">
+						<div class="text-center mb-3">
 							<button onClick={login} class="btn btn-info" style={{ width: "100%", borderRadius: 10 }}>
 								{!loading ? (
 									"Login"
@@ -155,6 +155,10 @@ const Login = (props) => {
 								)}
 							</button>
 						</div>
+
+						<Link className="text-info" to="/signup">
+							Don't yet have an account? Create one.
+						</Link>
 					</form>
 				</div>
 			</div>

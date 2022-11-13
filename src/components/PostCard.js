@@ -1,8 +1,50 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import store from "../redux/store";
+import axiosInstance, { baseURL } from "../utils/axios";
+import DeletePostModal from "./DeletePostModal";
 
-const PostCard = ({ title, description, youtubeVideoUrl, imageUrl, types, created_at, width, index, maxNumber }) => {
+const PostCard = ({
+	title,
+	description,
+	youtubeVideoUrl,
+	imageUrl,
+	types,
+	created_at,
+	width,
+	index,
+	maxNumber,
+	id,
+	setPostChanged,
+	postChanged,
+}) => {
 	const navigate = useNavigate();
+	const isAdmin = store.getState().auth.user?.admin;
+	const [loading, setLoading] = useState(false);
+	const [showModal, setShowModal] = useState(false);
+	const [postIdToDelete, setPostIdToDelete] = useState(null);
+
+	const handleDelete = async (id) => {
+		setPostIdToDelete(id);
+		setShowModal(true);
+		console.log("id", id);
+		// setLoading(true);
+		// await asyncDelete();
+	};
+
+	const asyncDelete = async () => {
+		try {
+			await axiosInstance.delete("/posts/" + postIdToDelete);
+			// setLoading(false);
+			setPostChanged(!postChanged);
+			window.location.href = "/education_news";
+		} catch (error) {
+			console.log("error", error);
+			setLoading(false);
+		}
+		setShowModal(false);
+	};
 
 	const computeDimensions = () => {
 		setTimeout(() => {
@@ -40,9 +82,6 @@ const PostCard = ({ title, description, youtubeVideoUrl, imageUrl, types, create
 	};
 	return (
 		<div
-			onClick={() => {
-				navigate("/post_details", { state: { title, description, youtubeVideoUrl, imageUrl, types, created_at } });
-			}}
 			className={`${
 				index == 0 || width < 768
 					? "col-11"
@@ -54,16 +93,27 @@ const PostCard = ({ title, description, youtubeVideoUrl, imageUrl, types, create
 			} card postCard border-0 border-dark-bottom  border-start-muted gy-5 gx-1 p-0 rounded-0  `}
 			// style={{ backgroundColor: "#eee" }}
 		>
+			<DeletePostModal showModal={showModal} asyncDelete={asyncDelete} setPostIdToDelete={postIdToDelete} />
 			<div className={` ${index == 0 && "d-md-flex"}`}>
 				{imageUrl ? (
 					<img
-						src={imageUrl}
+						onClick={() => {
+							navigate("/post_details", {
+								state: { title, description, youtubeVideoUrl, imageUrl, types, created_at },
+							});
+						}}
+						src={baseURL + imageUrl}
 						className={`card-img-top rounded-0 `}
-						style={width > 768 && index == 0 ? { width: (width * 4) / 7 } : null}
+						style={{ objectFit: "cover", maxHeight: 300, width: width > 768 && index == 0 ? (width * 4) / 7 : null }}
 						alt="..."
 					/>
 				) : (
 					<iframe
+						onClick={() => {
+							navigate("/post_details", {
+								state: { title, description, youtubeVideoUrl, imageUrl, types, created_at },
+							});
+						}}
 						src={youtubeVideoUrl}
 						title="YouTube video player"
 						frameborder="0"
@@ -74,8 +124,35 @@ const PostCard = ({ title, description, youtubeVideoUrl, imageUrl, types, create
 				)}
 
 				<div className="card-body">
-					<h5 className="card-title">{title}</h5>
-					<div className="card-text small">
+					<h5 className="card-title d-flex justify-content-between">
+						<div
+							onClick={() => {
+								navigate("/post_details", {
+									state: { title, description, youtubeVideoUrl, imageUrl, types, created_at },
+								});
+							}}
+						>
+							{title}
+						</div>
+						{isAdmin &&
+							(!loading ? (
+								<span onClick={() => handleDelete(id)} style={{ zIndex: "10" }} class="material-symbols-outlined">
+									delete
+								</span>
+							) : (
+								<div class="spinner-border spinner-border-sm text-secondary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							))}
+					</h5>
+					<div
+						onClick={() => {
+							navigate("/post_details", {
+								state: { title, description, youtubeVideoUrl, imageUrl, types, created_at },
+							});
+						}}
+						className="card-text small"
+					>
 						<p className="text-muted ">{new Date(created_at).toDateString()}</p>
 						<p className={`${"small"}  `}>{sliceBasedOnScreenWidth(description)}</p>
 					</div>
