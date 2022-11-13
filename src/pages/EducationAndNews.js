@@ -6,7 +6,6 @@ import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import PostCard from "../components/PostCard";
 import { informations as posts } from "../utils/testData";
 import Modal from "react-bootstrap/Modal";
-import DeletePostModal from "../components/DeletePostModal";
 
 const EducationAndNews = ({ currentUser }) => {
 	const [filter, setFilter] = useState("none");
@@ -143,7 +142,7 @@ const EducationAndNews = ({ currentUser }) => {
 	return (
 		<div>
 			<Navbar currentUser={currentUser} page={"education_news"} />
-			<DeletePostModal />
+
 			<div className="container">
 				<div className="pt-3 row justify-content-center mt-xl-4">
 					<h2

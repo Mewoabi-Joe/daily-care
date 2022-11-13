@@ -4,13 +4,11 @@ import { Modal, Button } from "react-bootstrap";
 import axiosInstance, { baseURL } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 
-export default function DeletePostModal({ showModal, asyncDelete, postIdToDelete }) {
+export default function DeletePostModal({ showModal, setShowModal, asyncDelete, postIdToDelete }) {
 	const navigate = useNavigate();
-	const [show, setShow] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => setShowModal(false);
 
 	const deleteTest = async () => {
 		setLoading(true);

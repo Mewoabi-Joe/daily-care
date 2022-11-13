@@ -93,7 +93,12 @@ const PostCard = ({
 			} card postCard border-0 border-dark-bottom  border-start-muted gy-5 gx-1 p-0 rounded-0  `}
 			// style={{ backgroundColor: "#eee" }}
 		>
-			<DeletePostModal showModal={showModal} asyncDelete={asyncDelete} setPostIdToDelete={postIdToDelete} />
+			<DeletePostModal
+				setShowModal={setShowModal}
+				showModal={showModal}
+				asyncDelete={asyncDelete}
+				setPostIdToDelete={postIdToDelete}
+			/>
 			<div className={` ${index == 0 && "d-md-flex"}`}>
 				{imageUrl ? (
 					<img
