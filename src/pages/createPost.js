@@ -32,6 +32,10 @@ const CreatePost = ({ currentUser }) => {
     setLoading(true)
     setErrors([])
     e.preventDefault()
+
+    const link = post.youtubeVideoUrl.split("?")
+    console.log(link)
+
     const data = new FormData()
     data.append("title", post.title)
     data.append("description", post.description)
@@ -56,7 +60,13 @@ const CreatePost = ({ currentUser }) => {
       const localErrors = []
       axiosErrors.forEach(error =>
         localErrors.push(
-          ` - ${error.title || error.description || error.image}`
+          ` - ${
+            error.title ||
+            error.description ||
+            error.image ||
+            error.video ||
+            error.url
+          }`
         )
       )
       console.log("localErrors", localErrors)
