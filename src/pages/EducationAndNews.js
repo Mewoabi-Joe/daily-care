@@ -5,7 +5,7 @@ import axiosInstance from "../utils/axios.js"
 import useWindowDimensions from "../hooks/WindowsDimensionHook.js"
 import PostCard from "../components/PostCard"
 import { informations as posts } from "../utils/testData"
-import Modal from "react-bootstrap/Modal"
+// import Modal from "react-bootstrap/Modal"
 
 const EducationAndNews = ({ currentUser }) => {
   const [filter, setFilter] = useState("none")
