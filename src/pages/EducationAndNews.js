@@ -1,155 +1,166 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../utils/axios.js";
-import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
-import PostCard from "../components/PostCard";
-import { informations as posts } from "../utils/testData";
-import Modal from "react-bootstrap/Modal";
+import React, { useEffect, useState } from "react"
+import Navbar from "../components/Navbar"
+import { useNavigate } from "react-router-dom"
+import axiosInstance from "../utils/axios.js"
+import useWindowDimensions from "../hooks/WindowsDimensionHook.js"
+import PostCard from "../components/PostCard"
+import { informations as posts } from "../utils/testData"
+// import Modal from "react-bootstrap/Modal"
 
 const EducationAndNews = ({ currentUser }) => {
-	const [filter, setFilter] = useState("none");
-	const [originalInformations, setOriginalInformations] = useState([]);
-	const [informations, setInformations] = useState([]);
-	const [variableInformations, setVariableInformations] = useState([]);
-	const [filterLoading, setFilterLoading] = useState(false);
-	const [informationsLoading, setInformationsLoading] = useState(false);
-	const [typeStates, setTypeStates] = useState({});
-	const [searchTerm, setSearchTerm] = useState("");
-	const [types, setTypes] = useState([]);
-	const { height, width } = useWindowDimensions();
-	const [postChanged, setPostChanged] = useState(false);
-	const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState("none")
+  const [originalInformations, setOriginalInformations] = useState([])
+  const [informations, setInformations] = useState([])
+  const [variableInformations, setVariableInformations] = useState([])
+  const [filterLoading, setFilterLoading] = useState(false)
+  const [informationsLoading, setInformationsLoading] = useState(false)
+  const [typeStates, setTypeStates] = useState({})
+  const [searchTerm, setSearchTerm] = useState("")
+  const [types, setTypes] = useState([])
+  const { height, width } = useWindowDimensions()
+  const [postChanged, setPostChanged] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-	function capitalizeFirstLetter(string) {
-		return string.charAt(0).toUpperCase() + string.slice(1);
-	}
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
 
-	const capitalizeFirstLetterOfTypesInInformation = (informations) => {
-		return informations.map((information) => {
-			const capitalisedTypes = information.type.map((type) => capitalizeFirstLetter(type));
-			information.type = capitalisedTypes;
-			return information;
-		});
-	};
+  const capitalizeFirstLetterOfTypesInInformation = informations => {
+    return informations.map(information => {
+      const capitalisedTypes = information.type.map(type =>
+        capitalizeFirstLetter(type)
+      )
+      information.type = capitalisedTypes
+      return information
+    })
+  }
 
-	useEffect(() => {
-		const getInformations = async () => {
-			// const getInformations = () => {
-			try {
-				setInformations(true);
-				setInformationsLoading(true);
-				let thePosts = [];
-				const res = await axiosInstance.get("/posts");
+  useEffect(() => {
+    const getInformations = async () => {
+      try {
+        setInformations(true)
+        setInformationsLoading(true)
+        let thePosts = []
+        const res = await axiosInstance.get("/posts")
 
-				console.log("res.data.posts.length", res.data.posts.length);
-				if (res.data.posts.length) {
-					let arrayOfPosts = res.data.posts;
+        console.log("res.data.posts.length", res.data.posts.length)
+        if (res.data.posts.length) {
+          let arrayOfPosts = res.data.posts
 
-					thePosts = arrayOfPosts.sort(function (a, b) {
-						// Turn your strings into dates, and then subtract them
-						// to get a value that is either negative, positive, or zero.
-						return new Date(a.created_at) - new Date(b.created_at);
-					});
-				} else {
-					thePosts = posts;
-				}
-				console.log("thePosts", res.data);
-				const originalInformationsWithCapitalisedTypes = capitalizeFirstLetterOfTypesInInformation(thePosts);
-				setOriginalInformations(originalInformationsWithCapitalisedTypes);
-				setVariableInformations(originalInformationsWithCapitalisedTypes);
-				let labInformationTypes = [];
-				originalInformationsWithCapitalisedTypes.forEach((information) =>
-					labInformationTypes.push(...information.type)
-				);
-				const setOflabInformationTypes = new Set(labInformationTypes);
-				const theTypes = Array.from(setOflabInformationTypes);
-				// console.log("theTypes", theTypes);
-				setTypes(theTypes);
-				let localTypeStates = {};
-				theTypes.forEach((type) => (localTypeStates[type] = false));
-				setTypeStates(localTypeStates);
-				setInformations(res.data);
-				setInformationsLoading(false);
-				setLoading(false);
-			} catch (error) {
-				console.log(error);
-				setLoading(false);
-				setInformationsLoading(false);
-			}
-		};
-		getInformations();
-	}, []);
+          thePosts = arrayOfPosts.sort(function (a, b) {
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(a.created_at) - new Date(b.created_at)
+          })
+        } else {
+          thePosts = posts
+        }
+        console.log("thePosts", res.data)
+        const originalInformationsWithCapitalisedTypes =
+          capitalizeFirstLetterOfTypesInInformation(thePosts)
+        setOriginalInformations(originalInformationsWithCapitalisedTypes)
+        setVariableInformations(originalInformationsWithCapitalisedTypes)
+        let labInformationTypes = []
+        originalInformationsWithCapitalisedTypes.forEach(information =>
+          labInformationTypes.push(...information.type)
+        )
+        const setOflabInformationTypes = new Set(labInformationTypes)
+        const theTypes = Array.from(setOflabInformationTypes)
+        // console.log("theTypes", theTypes);
+        setTypes(theTypes)
+        let localTypeStates = {}
+        theTypes.forEach(type => (localTypeStates[type] = false))
+        setTypeStates(localTypeStates)
+        setInformations(res.data)
+        setInformationsLoading(false)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+        setInformationsLoading(false)
+      }
+    }
+    getInformations()
+  }, [])
 
-	const handleCheckBoxChange = async (e) => {
-		setSearchTerm("");
-		setFilterLoading(true);
-		let localTypeStates = typeStates;
-		localTypeStates[e.target.id] = e.target.checked;
-		setTypeStates(localTypeStates);
-		filterVariableInformation();
-		setTimeout(() => {
-			setFilterLoading(false);
-		}, 1000);
-	};
+  const handleCheckBoxChange = async e => {
+    setSearchTerm("")
+    setFilterLoading(true)
+    let localTypeStates = typeStates
+    localTypeStates[e.target.id] = e.target.checked
+    setTypeStates(localTypeStates)
+    filterVariableInformation()
+    setTimeout(() => {
+      setFilterLoading(false)
+    }, 1000)
+  }
 
-	const filterVariableInformation = () => {
-		const typeKeys = Object.keys(typeStates);
-		const checkedTypes = typeKeys.filter((typeKey) => typeStates[typeKey] === true);
-		console.log("checkedTypes", checkedTypes);
-		const filteredOriginalInformation = originalInformations.filter((information) => {
-			let match = false;
-			information.type.forEach((type) => {
-				if (checkedTypes.includes(type)) {
-					match = true;
-				}
-			});
-			if (match) return true;
-		});
-		if (filteredOriginalInformation.length) {
-			setVariableInformations(filteredOriginalInformation);
-		} else {
-			setVariableInformations(originalInformations);
-		}
-	};
+  const filterVariableInformation = () => {
+    const typeKeys = Object.keys(typeStates)
+    const checkedTypes = typeKeys.filter(
+      typeKey => typeStates[typeKey] === true
+    )
+    console.log("checkedTypes", checkedTypes)
+    const filteredOriginalInformation = originalInformations.filter(
+      information => {
+        let match = false
+        information.type.forEach(type => {
+          if (checkedTypes.includes(type)) {
+            match = true
+          }
+        })
+        if (match) return true
+      }
+    )
+    if (filteredOriginalInformation.length) {
+      setVariableInformations(filteredOriginalInformation)
+    } else {
+      setVariableInformations(originalInformations)
+    }
+  }
 
-	const unTickAllCheckBoxes = () => {
-		const typeKeys = Object.keys(typeStates);
-		const localTypeStates = typeStates;
-		typeKeys.forEach((typeKey) => (localTypeStates[typeKey] = false));
-		console.log("localTypeStates", localTypeStates);
-		setTypeStates(localTypeStates);
-	};
+  const unTickAllCheckBoxes = () => {
+    const typeKeys = Object.keys(typeStates)
+    const localTypeStates = typeStates
+    typeKeys.forEach(typeKey => (localTypeStates[typeKey] = false))
+    console.log("localTypeStates", localTypeStates)
+    setTypeStates(localTypeStates)
+  }
 
-	const handleSearchInputChange = (text) => {
-		unTickAllCheckBoxes();
-		setSearchTerm(text);
-		console.log("variableInformations", variableInformations);
-		const informationsCorrespondingToSearch = originalInformations.filter((information) => {
-			console.log("text", text);
-			return information.title.toLowerCase().includes(text.toLowerCase());
-		});
-		console.log("informationsCorrespondingToSearch", informationsCorrespondingToSearch);
-		setVariableInformations(informationsCorrespondingToSearch);
-	};
+  const handleSearchInputChange = text => {
+    unTickAllCheckBoxes()
+    setSearchTerm(text)
+    console.log("variableInformations", variableInformations)
+    const informationsCorrespondingToSearch = originalInformations.filter(
+      information => {
+        console.log("text", text)
+        return information.title.toLowerCase().includes(text.toLowerCase())
+      }
+    )
+    console.log(
+      "informationsCorrespondingToSearch",
+      informationsCorrespondingToSearch
+    )
+    setVariableInformations(informationsCorrespondingToSearch)
+  }
 
-	const handleEmptySearch = () => {
-		setSearchTerm("");
-		setVariableInformations(originalInformations);
-	};
+  const handleEmptySearch = () => {
+    setSearchTerm("")
+    setVariableInformations(originalInformations)
+  }
 
-	const navigate = useNavigate();
+  const navigate = useNavigate()
 
-	const handleViewDetails = (information) => {
-		console.log(information);
-		navigate("/lab_information_details", { state: information });
-	};
+  const handleViewDetails = information => {
+    console.log(information)
+    navigate("/lab_information_details", { state: information })
+  }
 
-	return (
-		<div>
-			<Navbar currentUser={currentUser} page={"education_news"} />
+  return (
+    <div>
+      <Navbar currentUser={currentUser} page={"education_news"} />
 
-			<div className="container">
+      <div className="container">
 				<div className="pt-3 row justify-content-center mt-xl-4">
 					<h2
 						style={width > 1200 ? { maxWidth: 330 } : null}
@@ -262,8 +273,8 @@ const EducationAndNews = ({ currentUser }) => {
 			{/* ${
 						variableInformations.length < 4 && width > 768 ? "justify-content-start m-auto" : "justify-content-evenly"
 					}` */}
-		</div>
-	);
-};
+    </div>
+  )
+}
 
-export default EducationAndNews;
+export default EducationAndNews
