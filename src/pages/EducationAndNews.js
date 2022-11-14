@@ -166,7 +166,7 @@ const EducationAndNews = ({ currentUser }) => {
 								value={searchTerm}
 								type="text"
 								className="form-control"
-								placeholder="search lab information"
+								placeholder="search"
 								aria-label="Recipient's username"
 								aria-describedby="button-addon2"
 								onChange={(e) => handleSearchInputChange(e.target.value)}

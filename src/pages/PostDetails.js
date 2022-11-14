@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import useWindowDimensions from "../hooks/WindowsDimensionHook";
+import { baseURL } from "../utils/axios";
 
 const PostDetails = ({ currentUser }) => {
 	const { state } = useLocation();
@@ -30,7 +31,7 @@ const PostDetails = ({ currentUser }) => {
 							opacity: 0.7,
 							backgroundBlendMode: "darken",
 							width: "100vw",
-							backgroundImage: `url(${imageUrl})`,
+							backgroundImage: `url(${baseURL + imageUrl})`,
 							// backgroundImage: `url(${externalImage})`,
 							backgroundSize: "cover",
 							backgroundRepeat: "no-repeat",
@@ -58,7 +59,7 @@ const PostDetails = ({ currentUser }) => {
 			)}
 
 			<div className={`container ${youtubeVideoUrl ? "pt-3" : "pt-5"}`}>
-				{youtubeVideoUrl && <h3>{title}</h3>}
+				{!imageUrl && <h3>{title}</h3>}
 				<div className="small py-2">{new Date(created_at).toDateString()}</div>
 				<div>{description}</div>
 			</div>
