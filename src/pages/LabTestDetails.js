@@ -55,7 +55,7 @@ const LabTestDetails = ({ currentUser }) => {
 					<div className="py-2 pt-3 col-md-8 col-lg-5">
 						<h2 className="text-center d-lg-none ">{state.name}</h2>
 						<img
-							style={{ height: 310, width: 482 }}
+							style={{ objectFit: "cover", height: 310, width: 482 }}
 							src={baseURL + state.imagePath}
 							alt="Test Image"
 							className="img-fluid "
