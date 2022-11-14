@@ -51,15 +51,23 @@ const CreatePost = ({ currentUser }) => {
       navigate("/education_news")
     } catch (error) {
       console.log("error", error)
-      // console.log("error.response.data", error?.response.data);
-      // const axiosErrors = error?.response.data;
-      // const localErrors = [];
-      // axiosErrors.forEach((error) =>
-      // 	localErrors.push(` - ${error.title || error.description || error.image || error.video}`)
-      // );
-      // console.log("localErrors", localErrors);
-      // setErrors(localErrors);
-      // setLoading(false);
+      console.log("error.response.data", error?.response.data)
+      const axiosErrors = error?.response.data
+      const localErrors = []
+      axiosErrors.forEach(error =>
+        localErrors.push(
+          ` - ${
+            error.title ||
+            error.description ||
+            error.image ||
+            error.video ||
+            error.url
+          }`
+        )
+      )
+      console.log("localErrors", localErrors)
+      setErrors(localErrors)
+      setLoading(false)
     }
   }
 
