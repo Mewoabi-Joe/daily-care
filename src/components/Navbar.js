@@ -122,8 +122,10 @@ const Navbar = ({ currentUser, page }) => {
 									</Link>
 									<Link
 										id="login"
+										style={{ backgroundColor: "rgb(110,149,62)", maxWidth: "150px" }}
+										// hsl(190, 90%, 25%)
 										onClick={handleLinkClick}
-										className={`btn btn-success px-3nav-link ${page.includes("login") && "active"}`}
+										className={`btn mb-3 mb-xl-0 btn-success px-3nav-link ${page.includes("login") && "active"}`}
 										to="/login"
 									>
 										Login
