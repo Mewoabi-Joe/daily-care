@@ -37,7 +37,6 @@ const EducationAndNews = ({ currentUser }) => {
 
   useEffect(() => {
     const getInformations = async () => {
-      // const getInformations = () => {
       try {
         setInformations(true)
         setInformationsLoading(true)
