@@ -109,7 +109,11 @@ const PostCard = ({
 						}}
 						src={baseURL + imageUrl}
 						className={`card-img-top rounded-0 `}
-						style={{ objectFit: "cover", maxHeight: 300, width: width > 768 && index == 0 ? (width * 4) / 7 : null }}
+						style={{
+							objectFit: "cover",
+							maxHeight: width < 576 ? 150 : 300,
+							width: width > 768 && index == 0 ? (width * 4) / 7 : null,
+						}}
 						alt="..."
 					/>
 				) : (
