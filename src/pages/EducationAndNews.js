@@ -46,7 +46,13 @@ const EducationAndNews = ({ currentUser }) => {
 
         console.log("res.data.posts.length", res.data.posts.length)
         if (res.data.posts.length) {
-          thePosts = res.data.posts
+          let arrayOfPosts = res.data.posts
+
+          thePosts = arrayOfPosts.sort(function (a, b) {
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(a.created_at) - new Date(b.created_at)
+          })
         } else {
           thePosts = posts
         }
