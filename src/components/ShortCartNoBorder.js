@@ -13,6 +13,7 @@ const ShortCartNoBorder = ({ id, image, name, price, handleViewDetails, handleEd
 				src={baseURL + image}
 				className="d-block card-img-top h-75"
 				alt="Complete Blood Count"
+				style={{ maxHeight: 150, objectFit: "cover" }}
 			></img>
 			<div className="card-body pt-1">
 				<div className="d-flex align-items-center justify-content-between">

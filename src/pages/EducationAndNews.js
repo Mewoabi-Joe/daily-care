@@ -5,6 +5,7 @@ import axiosInstance from "../utils/axios.js";
 import useWindowDimensions from "../hooks/WindowsDimensionHook.js";
 import PostCard from "../components/PostCard";
 import { informations as posts } from "../utils/testData";
+import Modal from "react-bootstrap/Modal";
 
 const EducationAndNews = ({ currentUser }) => {
 	const [filter, setFilter] = useState("none");
@@ -12,11 +13,13 @@ const EducationAndNews = ({ currentUser }) => {
 	const [informations, setInformations] = useState([]);
 	const [variableInformations, setVariableInformations] = useState([]);
 	const [filterLoading, setFilterLoading] = useState(false);
-	const [informationsLoading, setInformationsLoading] = useState(true);
+	const [informationsLoading, setInformationsLoading] = useState(false);
 	const [typeStates, setTypeStates] = useState({});
 	const [searchTerm, setSearchTerm] = useState("");
 	const [types, setTypes] = useState([]);
 	const { height, width } = useWindowDimensions();
+	const [postChanged, setPostChanged] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
@@ -24,26 +27,34 @@ const EducationAndNews = ({ currentUser }) => {
 
 	const capitalizeFirstLetterOfTypesInInformation = (informations) => {
 		return informations.map((information) => {
-			const capitalisedTypes = information.types.map((type) => capitalizeFirstLetter(type));
-			information.types = capitalisedTypes;
+			const capitalisedTypes = information.type.map((type) => capitalizeFirstLetter(type));
+			information.type = capitalisedTypes;
 			return information;
 		});
 	};
 
 	useEffect(() => {
-		// const getInformations = async () => {
-		const getInformations = () => {
+		const getInformations = async () => {
+			// const getInformations = () => {
 			try {
-				let res = {};
-				// const res = await axiosInstance.get("/information");
-				res.data = posts;
-				console.log("res.data", res.data);
-				const originalInformationsWithCapitalisedTypes = capitalizeFirstLetterOfTypesInInformation(res.data);
+				setInformations(true);
+				setInformationsLoading(true);
+				let thePosts = [];
+				const res = await axiosInstance.get("/posts");
+
+				console.log("res.data.posts.length", res.data.posts.length);
+				if (res.data.posts.length) {
+					thePosts = res.data.posts;
+				} else {
+					thePosts = posts;
+				}
+				console.log("thePosts", res.data);
+				const originalInformationsWithCapitalisedTypes = capitalizeFirstLetterOfTypesInInformation(thePosts);
 				setOriginalInformations(originalInformationsWithCapitalisedTypes);
 				setVariableInformations(originalInformationsWithCapitalisedTypes);
 				let labInformationTypes = [];
 				originalInformationsWithCapitalisedTypes.forEach((information) =>
-					labInformationTypes.push(...information.types)
+					labInformationTypes.push(...information.type)
 				);
 				const setOflabInformationTypes = new Set(labInformationTypes);
 				const theTypes = Array.from(setOflabInformationTypes);
@@ -54,8 +65,11 @@ const EducationAndNews = ({ currentUser }) => {
 				setTypeStates(localTypeStates);
 				setInformations(res.data);
 				setInformationsLoading(false);
+				setLoading(false);
 			} catch (error) {
 				console.log(error);
+				setLoading(false);
+				setInformationsLoading(false);
 			}
 		};
 		getInformations();
@@ -79,7 +93,7 @@ const EducationAndNews = ({ currentUser }) => {
 		console.log("checkedTypes", checkedTypes);
 		const filteredOriginalInformation = originalInformations.filter((information) => {
 			let match = false;
-			information.types.forEach((type) => {
+			information.type.forEach((type) => {
 				if (checkedTypes.includes(type)) {
 					match = true;
 				}
@@ -128,6 +142,7 @@ const EducationAndNews = ({ currentUser }) => {
 	return (
 		<div>
 			<Navbar currentUser={currentUser} page={"education_news"} />
+
 			<div className="container">
 				<div className="pt-3 row justify-content-center mt-xl-4">
 					<h2
@@ -196,11 +211,7 @@ const EducationAndNews = ({ currentUser }) => {
 						variableInformations.length < 4 && width > 768 ? "justify-content-start m-auto" : "justify-content-evenly"
 					}`}
 				>
-					{!originalInformations.length ? (
-						<p className="fw-bold text-center mt-5 pt-5">
-							<span className="ms-2">No Educational resource or News has been published yet</span>
-						</p>
-					) : informationsLoading ? (
+					{informationsLoading ? (
 						<div className="text-center mt-5 pt-5 text-info">
 							<div class="spinner-grow" role="status">
 								<span class="visually-hidden">Loading...</span>
@@ -212,6 +223,10 @@ const EducationAndNews = ({ currentUser }) => {
 								<span class="visually-hidden">Loading...</span>
 							</div>
 						</div>
+					) : !originalInformations.length ? (
+						<p className="fw-bold text-center mt-5 pt-5">
+							<span className="ms-2">No Educational resource or News has been published yet</span>
+						</p>
 					) : !variableInformations.length ? (
 						<p className="fw-bold text-center mt-5 pt-5">
 							<span class="material-symbols-outlined ">search_off</span>
@@ -226,10 +241,13 @@ const EducationAndNews = ({ currentUser }) => {
 								youtubeVideoUrl={info.youtubeVideoUrl}
 								types={info.types}
 								created_at={info.created_at}
-								imageUrl={info.imageUrl}
+								imageUrl={info.imagePath}
 								width={width}
 								index={index}
 								maxNumber={variableInformations.length}
+								id={info._id}
+								setPostChanged={setPostChanged}
+								postChanged={postChanged}
 							/>
 						))
 					)}
